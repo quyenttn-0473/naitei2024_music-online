@@ -24,7 +24,7 @@ router.post('/login', validateRequest(LoginDto), UserController.postLogin);
 router.get('/logout', UserController.logout);
 
 router.get('/error', (req, res) => {
-  res.render('error', { title: req.t('error.title') });
+  res.render('error', { message: req.t('error.system') });
 });
 
 export default router;

@@ -10,7 +10,8 @@ block content
           .card-body
             form#registerUserform(action="/register" method="POST") 
               if error_msg.length
-                #errorAlert.alert.alert-danger #{error_msg}
+                #errorAlert.alert.alert-danger
+                  | #{error_msg}
               .mb-3
                 label.form-label(for="username")= t('form.username')
                 input.form-control(type="username" name="username" id="username" placeholder="username123" required)

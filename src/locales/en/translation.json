@@ -18,7 +18,8 @@
     "author": "Author",
     "genre": "Genre",
     "song": "Song",
-    "user": "User"
+    "user": "User",
+    "album": "Album"
   },
   "content": {
     "discover_new_music": "Discover New Music",
@@ -32,17 +33,26 @@
     "username": "User Name",
     "email": "Email Address",
     "password": "Password",
-    "confirm_password": "Confirm Password"
+    "confirm_password": "Confirm Password",
+    "author": "Author",
+    "fullname": "Full Name",
+    "avatar": "Avatar",
+    "dateOfBirth": "Date Of Birth",
+    "releaseDate": "Release Date",
+    "title_album": "Name Album"
   },
   "action": {
     "register": "Register",
     "login": "Login",
     "logout": "Logout",
-    "loginByGoogle": "Login by Google"
+    "loginByGoogle": "Login by Google",
+    "create": "Create ",
+    "list": "List"
   },
   "option": {
     "english": "English",
-    "vietnamese": "Vietnamese"
+    "vietnamese": "Vietnamese",
+    "album": "Album"
   },
   "error": {
     "invalidCredentials": "Invalid Credentials",
@@ -64,7 +74,13 @@
     "failedToFetchGenres": "Failed to fetch genres.",
     "invalidGenreId": "Invalid genre ID",
     "genreNotFound": "Genre not found",
-    "usernameNotFound": "Username not found!"
+    "noPageCreate": "No Page Create",
+    "usernameNotFound": "Username not found!",
+    "noAlbums": "Album not found",
+    "authorNotFound": "Author not Found"
+  },
+  "success": {
+    "createSuccess": "Create Succsess"
   },
   "message": {
     "notAccount": "Do not have an account?",
@@ -86,6 +102,7 @@
   "common": {
     "edit": "Edit",
     "delete": "Delete",
-    "create": "Create"
+    "create": "Create",
+    "detail": "Detail"
   }
 }

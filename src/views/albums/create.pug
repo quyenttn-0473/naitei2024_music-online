@@ -1,0 +1,29 @@
+extends ../layout_admin
+
+block content
+  .container
+    h1 #{t('action.create')} #{t('option.album')}
+    form#albumForm(action="/admin/albums/create" method="POST" enctype="multipart/form-data") 
+      if error_msg.length
+        p#errorAlert.alert.alert-danger #{error_msg}
+      if success_msg.length
+        #successAlert.alert.alert-success
+          | #{success_msg}
+      .mb-3
+        label.form-label(for="title")= t('form.title_album')
+        input.form-control(type="text" name="title" id="title" placeholder=t('form.title_album') required)
+      .mb-3
+        label.form-label(for="avatar")= t('form.avatar')
+        input.form-control(type="file" name="avatar" id="avatar" accept="image/*")
+      .mb-3
+        label.form-label(for="releaseDate")= t('form.releaseDate')
+        input.form-control(type="date" name="releaseDate" id="releaseDate" required)
+      .mb-3
+        label.form-label(for="author")= t('form.author')
+        select.form-control(name="authorId" id="author")
+          each author in authors
+            option(value=author.id selected)= author.fullname
+      button.btn.btn-success.fw-bold.w-100(type="submit")= t('action.create')
+
+  block scripts
+    script(src="/js/user.js")

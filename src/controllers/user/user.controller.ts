@@ -20,7 +20,7 @@ export class UserController {
     try {
       res.render('pages/user/login', { pageTitle: t('action.login') });
     } catch (error) {
-      req.flash('error_msg', t('noPageLogin'));
+      req.flash('error_msg', t('error.noPageLogin'));
       return res.render('error', {
         message: t('error.loginFail'),
         error: { status: 500, stack: error.stack },
