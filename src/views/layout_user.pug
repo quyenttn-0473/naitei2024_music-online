@@ -1,3 +1,4 @@
+
 doctype html
 html(lang="en")
   head
@@ -5,17 +6,17 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title #{title}
     link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
+    link(rel="stylesheet", href="/stylesheets/all.min.css")
+    link(rel="stylesheet", href="/styles/custom_homepage.css")
     script(src="/scripts/jquery.min.js")
     script(src="/scripts/popper.min.js")
     script(src="/scripts/bootstrap.min.js")
-    link(rel="stylesheet", href="styles/custom_homepage.css")
-    link(rel="stylesheet", href="/stylesheets/all.min.css")
 
   body
     nav.navbar.navbar-dark
       a.navbar-brand(href="#")= t('navbar.brand')
       div.navbar-right
-        a.btn.btn-login.text-light(href="/logout")= t('action.logout')
+        a.btn.btn-login(href="/logout")= t('action.logout')
         span.language-selector
         a.text-decoration-none.text-light.pe-2(href='?lng=en') #{t('navbar.language.english')} 
         a.text-decoration-none.text-light |

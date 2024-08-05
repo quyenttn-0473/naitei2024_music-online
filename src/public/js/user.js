@@ -75,3 +75,17 @@ $(document).ready(function () {
     }, 3000);
   }
 });
+
+$(document).ready(function () {
+  $('#avatar').on('change', function (event) {
+    var file = event.target.files[0];
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#previewImage').attr('src', e.target.result);
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  });
+});

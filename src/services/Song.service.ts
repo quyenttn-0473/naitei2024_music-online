@@ -1,6 +1,6 @@
-import { AppDataSource } from "@src/config/data-source";
-import { Song } from "@src/entities/Song.entity";
-import { TFunction } from "i18next";
+import { AppDataSource } from '@src/config/data-source';
+import { Song } from '@src/entities/Song.entity';
+import { TFunction } from 'i18next';
 
 const songRepository = AppDataSource.getRepository(Song);
 
@@ -10,4 +10,9 @@ export const countSongsByGenreId = async (genreId: number, t: TFunction) => {
   } catch (error) {
     throw new Error(t('error.countSongsByGenre'));
   }
+};
+export const getSongCountByAlbumId = async (id: number) => {
+  return await songRepository.count({
+    where: { album: { id } },
+  });
 };

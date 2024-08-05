@@ -18,7 +18,8 @@
     "author": "Author",
     "genre": "Genre",
     "song": "Song",
-    "user": "User"
+    "user": "User",
+    "album": "Album"
   },
   "content": {
     "discover_new_music": "Discover New Music",
@@ -32,17 +33,27 @@
     "username": "User Name",
     "email": "Email Address",
     "password": "Password",
-    "confirm_password": "Confirm Password"
+    "confirm_password": "Confirm Password",
+    "author": "Author",
+    "fullname": "Full Name",
+    "avatar": "Avatar",
+    "dateOfBirth": "Date Of Birth",
+    "releaseDate": "Release Date",
+    "title_album": "Name Album"
   },
   "action": {
     "register": "Register",
     "login": "Login",
     "logout": "Logout",
-    "loginByGoogle": "Login by Google"
+    "loginByGoogle": "Login by Google",
+    "create": "Create ",
+    "list": "List"
   },
   "option": {
     "english": "English",
-    "vietnamese": "Vietnamese"
+    "vietnamese": "Vietnamese",
+    "album": "Album",
+    "author": "Author"
   },
   "error": {
     "invalidCredentials": "Invalid Credentials",
@@ -67,7 +78,17 @@
     "usernameNotFound": "Username not found!",
     "failedToCreateGenre": "Failed to create genre.",
     "genreAlreadyExists": "Genre name already taken",
-    "countSongsByGenre": "Lỗi khi đếm số lượng bài hát theo thể loại"
+    "countSongsByGenre": "Error counting songs by genre",
+    "noPageCreate": "No Page Create",
+    "noAlbums": "Album not found",
+    "authorNotFound": "Author Not Found",
+    "songNotFound": "Song Not Found",
+    "albumNotFound": "Album Not Found"
+  },
+  "success": {
+    "createSuccess": "Create Success",
+    "updateSuccess": "Update Success",
+    "deleteSuccess": "Delete Success"
   },
   "message": {
     "notAccount": "Do not have an account?",
@@ -81,7 +102,9 @@
     "usernameAvailable": "Username is available",
     "successfullyCreated": "Successfully created.",
     "successfullyUpdated": "Successfully updated.",
-    "successfullyDeleted": "Successfully deleted."
+    "successfullyDeleted": "Successfully deleted.",
+    "numberSong": "Number of songs",
+    "confirmation_delete": "Are you sure you want to delete?"
   },
   "genres": {
     "title": "Genre List",
@@ -98,6 +121,10 @@
     "edit": "Edit",
     "delete": "Delete",
     "create": "Create",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "detail": "Detail"
+  },
+  "songs": {
+    "artist": "Artist: "
   }
 }

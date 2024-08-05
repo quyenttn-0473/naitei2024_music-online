@@ -1,21 +1,22 @@
 body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   background-color: #121212;
   color: #e1e1e1;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-  background-color: #1e1e1e;
-  border-radius: 8px;
-  color: #1db954;
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
+  background-color: #1e1e1e;
+  border-radius: 8px;
 }
 
 h1 {
-  color: #1db954;
   font-size: 2.5rem;
+  color: #1db954;
 }
 
 a {
@@ -28,14 +29,14 @@ a:hover {
 }
 
 a.btn {
-  border-radius: 25px;
   display: inline-block;
+  padding: 10px 20px;
   font-size: 1rem;
   font-weight: bold;
-  margin-right: 10px;
-  padding: 10px 20px;
   text-align: center;
   text-decoration: none;
+  border-radius: 25px;
+  margin-right: 10px;
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -53,7 +54,8 @@ a.btn-danger {
   color: #ffffff;
 }
 
-a.btn-danger:hover {
+a.btn-danger:hover,
+button.btn.btn-outline-danger:hover {
   background-color: #ff2b49;
 }
 
@@ -64,4 +66,104 @@ a.btn-success {
 
 a.btn-success:hover {
   background-color: #121212;
+}
+
+.card-songs-detail {
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: none;
+  background-color: #1e1e1e;
+  color: #e1e1e1;
+}
+
+.card-img-top {
+  height: 250px;
+  object-fit: contain;
+  width: 100%;
+}
+
+.card-body {
+  background-color: #121212;
+  color: #e5e5e5;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 16px;
+}
+
+button.btn {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 50px;
+}
+
+button.btn-primary {
+  background-color: #1db954;
+  border: none;
+}
+
+button.btn-success {
+  background-color: #1db954;
+  border: none;
+}
+
+pre.card-text {
+  white-space: pre-wrap;
+  font-family: 'Roboto', sans-serif;
+  color: #e5e5e5;
+}
+
+.row {
+  margin-bottom: 1.5rem;
+}
+
+.col-md-6 {
+  margin-bottom: 1.5rem;
+}
+
+h2.card-title {
+  font-size: 22px;
+  margin-bottom: 1rem;
+}
+
+p.card-text {
+  margin-bottom: 1rem;
+}
+
+button.btn-primary:hover {
+  background-color: #1ed760;
+}
+
+button.btn-success:hover {
+  background-color: #121212;
+}
+
+.col-3 .album-avatar {
+  border-radius: 10px;
+  width: 150px;
+  height: 150px
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.song-avatar {
+  border-radius: 5px;
+  height: 70px;
+  margin-left: 10px;
+  width: 100px;
+  object-fit: cover;
+}
+
+button.btn.btn-outline-danger {
+  border-color: #dc3545;
+  background-color: #282828;
 }

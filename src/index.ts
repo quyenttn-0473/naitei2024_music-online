@@ -9,6 +9,7 @@ import router from './routes/index';
 import { AppDataSource } from './config/data-source';
 import { sessionMiddleware } from './middleware/sessionMiddleware';
 import cookieParser from 'cookie-parser';
+import methodOverride from 'method-override';
 
 const app = express();
 
@@ -33,8 +34,6 @@ void i18next
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
-
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(middleware.handle(i18next));
 
@@ -79,6 +78,7 @@ AppDataSource.initialize()
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     app.use(express.static(path.join(__dirname, 'public')));
+    app.use(methodOverride('_method'));
     app.use(sessionMiddleware);
     app.use('/', router);
 
