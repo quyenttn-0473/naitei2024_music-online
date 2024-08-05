@@ -18,7 +18,8 @@
     "author": "Tác Giả",
     "genre": "Thể Loại",
     "song": "Bài Hát",
-    "user": "Người Dùng"
+    "user": "Người Dùng",
+    "album": "Album"
   },
   "content": {
     "discover_new_music": "Khám Phá Âm Nhạc Mới",
@@ -32,17 +33,26 @@
     "username": "Tên tài khoản",
     "email": "Địa chỉ email",
     "password": "Mật khẩu",
-    "confirm_password": "Xác nhận mật khẩu"
+    "confirm_password": "Xác nhận mật khẩu",
+    "author": "Tác giả",
+    "fullname": "Họ và tên",
+    "avatar": "Ảnh đại diện",
+    "dateOfBirth": "Ngày sinh",
+    "releaseDate": "Ngày phát hành",
+    "title_album": "Tên Album"
   },
   "action": {
     "register": "Đăng ký",
     "login": "Đăng nhập",
     "logout": "Đăng xuất",
-    "loginByGoogle": "Đăng nhập bằng Google"
+    "loginByGoogle": "Đăng nhập bằng Google",
+    "create": "Tạo mới",
+    "list": "Danh sách"
   },
   "option": {
     "english": "Tiếng Anh",
-    "vietnamese": "Tiếng Việt"
+    "vietnamese": "Tiếng Việt",
+    "album": "Album"
   },
   "error": {
     "invalidCredentials": "Thông tin không hợp lệ",
@@ -62,7 +72,14 @@
     "usernameAlreadyTaken": "Tên người dùng đã được sử dụng",
     "checkingUsername": "Lỗi kiểm tra tên người dùng",
     "failedToFetchGenres": "Không thể lấy thể loại.",
-    "usernameNotFound": "Tên người dùng không tồn tại!"
+    "noPageCreate": "Không có trang Tạo mới",
+    "usernameNotFound": "Tên người dùng không tồn tại!",
+    "noAlbums": "Không có Album",
+    "authorNotFound": "Không tìm thấy tác giả",
+    "songNotFound": "Không tìm thấy bài hát"
+  },
+  "success": {
+    "createSuccess": "Tạo mới thành công"
   },
   "message": {
     "notAccount": "Bạn chưa có tài khoản?",
@@ -73,9 +90,7 @@
     "emailIsNotValid": "Email này không hợp lệ. Hãy đảm bảo rằng email được nhập dưới dạng example@example.com",
     "welcom": "Chào mừng, ",
     "homepage": "Đây là trang chủ. Bạn đang đăng nhập với tên ",
-    "usernameAvailable": "Tên người dùng có thể sử dụng",
-    "invalidGenreId": "ID thể loại không hợp lệ",
-    "genreNotFound": "Không tìm thấy thể loại"
+    "usernameAvailable": "Tên người dùng có thể sử dụng"
   },
   "genres": {
     "title": "Danh sách thể loại",
@@ -86,6 +101,10 @@
   "common": {
     "edit": "Chỉnh sửa",
     "delete": "Xóa",
-    "create": "Tạo mới"
+    "create": "Tạo mới",
+    "detail": "Chi tiết"
+  },
+  "songs": {
+    "artist": "Nghệ sĩ: "
   }
 }

@@ -1,0 +1,17 @@
+extends ../layout_admin
+
+block content 
+  .container 
+    h1.text-center #{t('action.list')} #{t('option.album')}
+    a.btn.btn-success.mb-3(href='/admin/albums/create') #{t('action.create')} #{t('option.album')}
+    if albums.length === 0
+      #errorAlert.alert.alert-danger #{t('error.noAlbums')}
+    ul.list-group
+      each album in albums
+        li.list-group-item.d-flex.justify-content-between.align-items-center
+          .d-flex.align-items-center
+            img.album-avatar(src=album.imageUrl, alt=album.title)
+            .ml-2
+              a.text-decoration-none.text-success(href=`/admin/albums/${album.id}`)
+                h5.mb-1= album.title
+              p #{t('form.releaseDate')}: #{album.releaseDate.toDateString()}

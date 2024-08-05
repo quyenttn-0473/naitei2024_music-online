@@ -1,21 +1,25 @@
+
 doctype html
 html(lang="en")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title #{title}
-    link(rel="stylesheet", href="/styles/custom_homepage.css")
-    link(rel="stylesheet", href="/styles/custom_detail.css")
-    link(rel="stylesheet", href="/styles/custom_list.css")
     link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
+    link(rel="stylesheet", href="/styles/custom_homepage.css")
+    link(rel="stylesheet", href="/styles/custom_list.css")
+    link(rel="stylesheet", href="/styles/custom_create.css")
+    link(rel="stylesheet", href="/styles/custom_detail.css")
     script(src="/scripts/jquery.min.js")
     script(src="/scripts/popper.min.js")
     script(src="/scripts/bootstrap.min.js")
+    
+
   body
     nav.navbar.navbar-dark
       a.navbar-brand(href="#")= t('navbar.brand')
       div.navbar-right
-        a.btn.btn-login.text-light(href="/logout")= t('action.logout')
+        a.btn.btn-login(href="/logout")= t('action.logout')
         span.language-selector
         a.text-decoration-none.text-light.pe-2(href='?lng=en') #{t('navbar.language.english')} 
         a.text-decoration-none.text-light |
@@ -36,6 +40,9 @@ html(lang="en")
           li.nav-item
             a.nav-link(href="#")
               = t('sidebar.song')
+          li.nav-item
+            a.nav-link(href="/admin/albums")
+              = t('sidebar.album')
           li.nav-item.divider
             hr
           li.nav-item

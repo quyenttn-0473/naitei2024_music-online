@@ -58,20 +58,3 @@ $(document).ready(function () {
     }
   });
 });
-
-$(document).ready(function () {
-  const $errorAlert = $('#errorAlert');
-  const $successAlert = $('#successAlert');
-  if ($errorAlert.length) {
-    $errorAlert.show();
-    setTimeout(() => {
-      $errorAlert.hide();
-    }, 3000);
-  }
-  if ($successAlert.length) {
-    $successAlert.show();
-    setTimeout(() => {
-      $successAlert.hide();
-    }, 3000);
-  }
-});

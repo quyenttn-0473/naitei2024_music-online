@@ -1,0 +1,27 @@
+extends ../layout_admin
+
+block content 
+  .container 
+    h1.text-center #{t('common.detail')} #{t('option.album')}
+    .row.mt-3
+      .col-3
+        img.album-avatar(src=album.imageUrl, alt=album.title)
+      .col-8
+        h4.text-white #{album.title}
+        h5.mt-2 #{t('form.releaseDate')}: #{album.releaseDate.toDateString()}
+        h5.mt-2 #{t('option.author')}: 
+          a(href=`/admin/authors/${author.id}`).mt-2 #{author.fullname}
+        h5.mt-2 #{t('message.numberSong')}: #{countSong}
+        .d-flex.pt-2
+          a.btn.btn-outline-success(href="/admin/albums") #{t('action.list')} #{t('option.album')}
+          a.btn.btn-outline-primary(href=`/admin/albums/update/${album.id}`) #{t('common.edit')} 
+          a.btn.btn-outline-danger(href=`/admin/albums/update/${album.id}`) #{t('common.delete')} 
+    .row.mt-3
+      ul.list-group 
+        each song in songs 
+          li.list-group-item.d-flex.justify-content-between
+            .col-9
+              a(href=`/admin/musics/${song.id}`)
+                h5.mb-1= song.title
+              h5 #{t('songs.artist')} #{song.artist}
+            img.song-avatar(src=song.imageUrl, alt=album.title)
