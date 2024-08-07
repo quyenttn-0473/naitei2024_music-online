@@ -14,7 +14,8 @@
     "useUnknownInCatchVariables": false,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "typeRoots": ["./node_modules/@types", "./types"]
   },
   "include": ["src/**/*.ts", "spec/**/*.ts", "build.ts"],
   "exclude": ["src/public/"]

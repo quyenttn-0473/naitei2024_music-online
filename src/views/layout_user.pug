@@ -5,17 +5,23 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title #{title}
     link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
+    link(rel="stylesheet", href="/stylesheets/all.min.css")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    link(rel="stylesheet", href="/styles/custom_homepage.css")
+    link(rel="stylesheet", href="/styles/custom_detail.css")
+    link(rel="stylesheet", href="/styles/custom_list.css")
+    link(rel="stylesheet", href="/styles/custom.css")
     script(src="/scripts/jquery.min.js")
     script(src="/scripts/popper.min.js")
     script(src="/scripts/bootstrap.min.js")
-    link(rel="stylesheet", href="styles/custom_homepage.css")
-    link(rel="stylesheet", href="/stylesheets/all.min.css")
+    script(src="/js/modal.js")
 
   body
     nav.navbar.navbar-dark
       a.navbar-brand(href="#")= t('navbar.brand')
       div.navbar-right
-        a.btn.btn-login.text-light(href="/logout")= t('action.logout')
+        a.btn.btn-login(href="#" id="showModal") #{user.username}
+          i.fas.fa-caret-down.ml-2
         span.language-selector
         a.text-decoration-none.text-light.pe-2(href='?lng=en') #{t('navbar.language.english')} 
         a.text-decoration-none.text-light |
@@ -47,6 +53,20 @@ html(lang="en")
             a.nav-link(href="#")
               i.fas.fa-heart
               = t('sidebar.liked_song')
-
       .content
         block content
+
+      .modal#accountModal(tabindex="-1" role="dialog")
+        .modal-dialog(role="document")
+          .modal-content.table_account
+            .modal-body
+              ul.nav.flex-column
+                li
+                  a(href="/user/account") #{t('action.account')}
+                  i.fa-solid.fa-pen-to-square.ml-3
+                li
+                  a(href="#") #{t('action.profile')}
+                  i.fa-solid.fa-address-card.ml-3
+                li
+                  a(href="/logout") #{t('action.logout')}
+                  i.fas.fa-sign-out-alt.ml-3

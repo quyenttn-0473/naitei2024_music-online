@@ -1,8 +1,10 @@
+import { formatDateYMD } from '@src/utils/formatDate';
 import UserService from '@src/services/user.service';
 import { Request, Response } from 'express';
 import { t } from 'i18next';
 import { comparePassword, hashPassword } from '@src/utils/passwordUtils';
 import { UserRoles } from '@src/enums/UserRoles.enum';
+import { User } from '@src/entities/User.entity';
 
 export class UserController {
   public static getRegister = (req: Request, res: Response) => {
@@ -89,10 +91,7 @@ export class UserController {
       // Xử lý đăng nhập thành công
       (req.session as any).user = user;
       if (user.role === UserRoles.User) {
-        return res.render('pages/home', {
-          pageTitle: t('page.home'),
-          user: user,
-        });
+        res.redirect('/user');
       } else {
         return res.redirect('/admin');
       }
@@ -114,5 +113,64 @@ export class UserController {
         res.redirect('/login');
       }
     });
+  };
+
+  public static getHomeUser = (req: Request, res: Response) => {
+    const user = req.session.user;
+    if (user) {
+      return res.render('pages/home', {
+        title: t('title'),
+        user: user,
+      });
+    } else {
+      res.redirect('/login');
+    }
+  };
+  public static getAccoutPage = (req: Request, res: Response) => {
+    const user = req.session.user;
+    if (user) {
+      return res.render('user.account/index', {
+        title: t('title'),
+        user: user,
+      });
+    } else {
+      res.redirect('/login');
+    }
+  };
+  public static getEditProfile = async (req: Request, res: Response) => {
+    const user = req.session.user;
+    const { id } = req.params;
+    try {
+      const userForm = await UserService.findById(parseInt(id));
+      if (!userForm) {
+        req.flash('error_msg', t('error.userNotFound'));
+        return res.redirect('/login');
+      }
+      const dateOfBirth = formatDateYMD(userForm.user_dateOfBirth);
+      return res.render('user.account/edit_profile', {
+        title: t('title'),
+        userForm: userForm,
+        dateOfBirth,
+        user: user,
+      });
+    } catch (error) {
+      res.redirect('/login');
+    }
+  };
+  public static postEditProfile = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const userData: Partial<User> = req.body;
+    try {
+      const success = await UserService.update(parseInt(id), userData);
+      if (!success) {
+        req.flash('error_msg', t('error.updateFail'));
+        return res.redirect(`/user/account/edit-profile/${id}`);
+      }
+      req.flash('success_msg', t('message.successfullyUpdated'));
+      return res.redirect(`/user/account/edit-profile/${id}`);
+    } catch (error) {
+      req.flash('error_msg', t('error.updateFail'));
+      res.redirect('/error');
+    }
   };
 }

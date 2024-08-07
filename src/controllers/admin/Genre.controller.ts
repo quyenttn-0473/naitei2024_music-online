@@ -54,7 +54,7 @@ export const list = asyncHandler(async (req: Request, res: Response) => {
   }
 });
 
-export const detail = asyncHandler(async (req: GenreRequest, res: Response, next: NextFunction) => {
+export const detail = asyncHandler(async (req: GenreRequest, res: Response) => {
   try {
     const genre = req.genre;
     if (!genre) {
@@ -99,7 +99,7 @@ export const updateGet = (req: GenreRequest, res: Response) => {
     res.render('genres/update', {
       title: req.t('genres.updateGenre'),
       genre,
-      flash: req.flash()
+      flash: req.flash(),
     });
   } catch (error) {
     req.flash('error_msg', req.t('error.failedToFetchGenres'));
@@ -128,7 +128,7 @@ export const deleteGet = (req: GenreRequest, res: Response) => {
       title: req.t('genres.deleteGenre'),
       genre,
       t: req.t,
-      flash: req.flash()
+      flash: req.flash(),
     });
   } catch (error) {
     req.flash('error_msg', req.t('error.failedToFetchGenres'));

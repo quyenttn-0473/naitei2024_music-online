@@ -32,13 +32,17 @@
     "username": "Tên tài khoản",
     "email": "Địa chỉ email",
     "password": "Mật khẩu",
-    "confirm_password": "Xác nhận mật khẩu"
+    "confirm_password": "Xác nhận mật khẩu",
+    "dateOfBirth": "Ngày sinh"
   },
   "action": {
     "register": "Đăng ký",
     "login": "Đăng nhập",
     "logout": "Đăng xuất",
-    "loginByGoogle": "Đăng nhập bằng Google"
+    "loginByGoogle": "Đăng nhập bằng Google",
+    "account": "Tài khoản",
+    "profile": "Hồ sơ",
+    "changePassword": "Đổi mật khẩu"
   },
   "option": {
     "english": "Tiếng Anh",
@@ -65,7 +69,7 @@
     "usernameNotFound": "Tên người dùng không tồn tại!",
     "failedToCreateGenre": "Không thể tạo thể loại",
     "genreAlreadyExists": "Tên thể loại đã tồn tại",
-    "countSongsByGenre": "Error counting songs by genre"
+    "countSongsByGenre": "Lỗi khi đếm số lượng bài hát theo thể loại"
   },
   "message": {
     "notAccount": "Bạn chưa có tài khoản?",

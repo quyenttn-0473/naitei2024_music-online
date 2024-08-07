@@ -49,8 +49,13 @@ li.list-group-item {
   padding: 15px;
 }
 
+li.list-group-item:hover {
+  background-color: #121212;
+  color: #fff;
+}
+
 a.text-decoration-none {
-  color: #1db954;
+  color: #f8f8f8;
   text-decoration: none;
 }
 
@@ -66,4 +71,27 @@ small {
   h1.my-4 {
     font-size: 2rem;
   }
+}
+
+.back {
+  margin-bottom: 20px;
+  background-color: #282828;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 18px;
+}
+
+.back:hover {
+  text-decoration: none;
+  color: #1db954;
+}
+
+label.form-label {
+  color: #fff;
+  font-weight: 600;
 }

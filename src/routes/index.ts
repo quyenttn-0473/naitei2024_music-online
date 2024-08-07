@@ -1,6 +1,7 @@
 import { homepage } from '../controllers/guess/index.controller';
 import { Router } from 'express';
 import index from './admin/index';
+import userIndex from './user/index';
 import validateRequest from '@src/middleware/validate-request.middleware';
 import { UserController } from '@src/controllers/user/user.controller';
 import { RegisterDto } from '@src/DTO/user/register';
@@ -11,7 +12,7 @@ const router = Router();
 router.get('/', homepage);
 
 router.use('/admin', index);
-
+router.use('/user', userIndex);
 router.get('/register', UserController.getRegister);
 router.post('/check-username', UserController.checkUsername);
 router.post(

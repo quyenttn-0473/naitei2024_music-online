@@ -1,0 +1,32 @@
+extends ../layout_user
+
+block content 
+  .container 
+    a.back(href="/user/account")
+      i.fas.fa-chevron-left
+    h2.text-light.mb-3 #{t('common.edit')} #{t('action.profile')}
+    form(action=`/user/account/edit-profile/${userForm.user_id}?_method=PUT` method="POST") 
+      input(type="hidden" name="_method" value="PUT")
+      if error_msg.length
+        #errorAlert.alert.alert-danger
+          | #{error_msg}
+      if success_msg.length
+        #successAlert.alert.alert-success
+          | #{success_msg}
+      .mb-3
+        label.form-label(for="username")= t('form.username')
+        p #{userForm.user_username}
+      .mb-3
+        label.form-label(for="email")= t('form.email')
+        input.form-control(type="email" name="email" id="email" aria-describedby="emailHelp" value=userForm.user_email )
+        #emailHelp.form-text(style="display: none;")
+          | #{t('message.emailIsNotValid')}
+      .mb-3
+        label.form-label(for="dateOfBirth")= t('form.dateOfBirth')
+        input.form-control(type="date" name="dateOfBirth" id="dateOfBirth" value=dateOfBirth)
+      .d-flex.align-items-center
+        a.text-decoration-none.mr-3(href="/user/account") #{t('common.cancel')}
+        button.btn.btn-outline-success(type="submit")= t('common.edit')
+
+  block scripts
+    script(src="/js/user.js")

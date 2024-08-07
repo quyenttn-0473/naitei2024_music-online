@@ -1,0 +1,14 @@
+extends ../layout_user
+
+block content 
+  .container
+    a.back(href="/user")
+      i.fas.fa-chevron-left
+    h2.text-light #{t('action.account')}: #{user.username}
+    ul.list-group
+      li.list-group-item
+        i.fa-solid.fa-pen-to-square.mr-3
+        a.text-decoration-none(href=`/user/account/edit-profile/${user.id}`) #{t('common.edit')} #{t('action.profile')}
+      li.list-group-item
+        i.fa-solid.fa-lock.mr-3
+        a.text-decoration-none(href="#") #{t('action.changePassword')}

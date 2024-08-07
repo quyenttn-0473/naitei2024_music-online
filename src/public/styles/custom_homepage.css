@@ -39,7 +39,7 @@ body {
   background-color: #333;
   border: none;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   margin: auto;
   max-width: 300px;
   overflow: hidden;
@@ -92,7 +92,7 @@ body {
 
 .navbar {
   background-color: #000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -111,7 +111,7 @@ body {
 
 .sidebar {
   background-color: #000;
-  box-shadow: 2px 0 4px rgba(0,0,0,0.5);
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   padding-top: 20px;
@@ -145,4 +145,38 @@ body {
   border: 0;
   border-top: 1px solid #444;
   margin: 10px 0;
+}
+
+.table_account {
+  background-color: #000;
+  color: #fff;
+}
+
+.modal-dialog {
+  position: fixed;
+  top: 9%;
+  right: 9%;
+  margin: 0;
+  width: auto;
+  max-width: 100%;
+}
+
+.modal-backdrop {
+  display: none !important;
+}
+
+.modal-body li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-body li:hover,
+.modal-body li a:hover {
+  color: #1ed760;
+}
+
+.modal-body li a {
+  color: #fff;
+  text-decoration: none;
 }

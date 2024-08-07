@@ -32,13 +32,17 @@
     "username": "User Name",
     "email": "Email Address",
     "password": "Password",
-    "confirm_password": "Confirm Password"
+    "confirm_password": "Confirm Password",
+    "dateOfBirth": "Date Of Birth"
   },
   "action": {
     "register": "Register",
     "login": "Login",
     "logout": "Logout",
-    "loginByGoogle": "Login by Google"
+    "loginByGoogle": "Login by Google",
+    "account": "Account",
+    "profile": "Profile",
+    "changePassword": "Change Password"
   },
   "option": {
     "english": "English",
@@ -67,7 +71,7 @@
     "usernameNotFound": "Username not found!",
     "failedToCreateGenre": "Failed to create genre.",
     "genreAlreadyExists": "Genre name already taken",
-    "countSongsByGenre": "Lỗi khi đếm số lượng bài hát theo thể loại"
+    "countSongsByGenre": "Error counting songs by genre"
   },
   "message": {
     "notAccount": "Do not have an account?",
