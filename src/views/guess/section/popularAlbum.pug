@@ -1,0 +1,13 @@
+extends ../../layout
+
+block content
+  .albums.px-4
+    .d-flex.justify-content-between.mt-4
+      h2.title #{t('guess_page.popularAlbum')}
+    ul.d-flex.mt-3.pl-0
+      each album in albums
+        li.item(role="button") 
+          img.avatar.square(src=album.imageUrl, alt=album.title)
+          a.full_name(href="#") #{album.title}
+          p.artist #{album.author.fullname}
+  

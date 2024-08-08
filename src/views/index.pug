@@ -1,13 +1,59 @@
 extends layout
 
 block content
-  h1.text-center.mb-4= t('content.discover_new_music')
-  .row
-    each track in tracks
-      .col-md-3.mb-4
-        .card
-          img.card-img-top(src=track.image, alt=track.title)
-          .card-body
-            h5.card-title= track.title
-            p.card-text= t('content.artist', { artist: track.artist })
-            a.btn.btn-primary(href="#")= t('content.play')
+  .artists.px-4
+    .d-flex.justify-content-between.mt-4
+      a(href="/section/artists").title #{t('guess_page.popularArtist')}
+      a.text-light(href="/section/artists")  #{t('guess_page.showAll')}
+    ul.d-flex.mt-3.single-line
+      each author, index in authors
+        if index < 6
+          li.item(role="button") 
+            img.avatar.circle(src=author.avatar, alt=author.fullname)
+            a.full_name(href="#") #{author.fullname}
+            p.artist #{t('guess_page.artist')}
+  .albums.px-4
+    .d-flex.justify-content-between.mt-4
+      a(href="/section/albums").title #{t('guess_page.popularAlbum')}
+      a.text-light(href="/section/albums")  #{t('guess_page.showAll')}
+    ul.d-flex.mt-3.pl-0
+      each album, index in albums
+        if index < 6
+          li.item(role="button") 
+            img.avatar.square(src=album.imageUrl, alt=album.title)
+            a.full_name(href="#") #{album.title}
+            p.artist #{album.author.fullname}
+  .playlists.px-4
+    .d-flex.justify-content-between.mt-4
+      a.title #{t('guess_page.popularRadio')}
+      a.text-light(href="#")  #{t('guess_page.showAll')}
+    ul.d-flex.mt-3.pl-0
+      li.item(role="button") 
+        img.avatar.square(src="https://i.scdn.co/image/ab676161000051745a79a6ca8c60e4ec1440be53", alt="AVT")
+        a.full_name(href="#") Sơn Tùng MTP 
+        p.artist Nghệ sĩ
+      li.item 
+        img.avatar.square(src="https://i.scdn.co/image/ab67616100005174e1cbc9e7ba8fbc5d7738ea51", alt="AVT")
+        a.full_name(href="#") HIEUTHUHAI 
+        p.artist Nghệ sĩ
+      li.item 
+        img.avatar.square(src="https://i.scdn.co/image/ab67616100005174316c0f0bc6cf3a29c203ab1e", alt="AVT")
+        a.full_name(href="#") W/N
+        p.artist Nghệ sĩ
+  .playlists.px-4
+    .d-flex.justify-content-between.mt-4
+      a.title #{t('guess_page.featuredCharts')}
+      a.text-light(href="#")  #{t('guess_page.showAll')}
+    ul.d-flex.mt-3.pl-0
+      li.item(role="button") 
+        img.avatar.square(src="https://i.scdn.co/image/ab676161000051745a79a6ca8c60e4ec1440be53", alt="AVT")
+        a.full_name(href="#") Sơn Tùng MTP 
+        p.artist Nghệ sĩ
+      li.item 
+        img.avatar.square(src="https://i.scdn.co/image/ab67616100005174e1cbc9e7ba8fbc5d7738ea51", alt="AVT")
+        a.full_name(href="#") HIEUTHUHAI 
+        p.artist Nghệ sĩ
+      li.item 
+        img.avatar.square(src="https://i.scdn.co/image/ab67616100005174316c0f0bc6cf3a29c203ab1e", alt="AVT")
+        a.full_name(href="#") W/N
+        p.artist Nghệ sĩ

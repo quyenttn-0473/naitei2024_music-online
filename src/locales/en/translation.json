@@ -151,5 +151,14 @@
     "delete": "Delete",
     "create": "Create",
     "cancel": "Cancel"
+  },
+  "guess_page": {
+    "popularArtist": "Popular artists",
+    "popularAlbum": "Popular albums",
+    "popularRadio": "Popular radio",
+    "featuredCharts": "Fearture Charts",
+    "musicPlaylist": "Music Online Playlists",
+    "showAll": "Show all",
+    "artist": "Artist"
   }
 }

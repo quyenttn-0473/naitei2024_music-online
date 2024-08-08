@@ -151,5 +151,14 @@
     "delete": "Xóa",
     "create": "Tạo Mới",
     "cancel": "Hủy"
+  },
+  "guess_page": {
+    "popularArtist": "Nghệ sĩ nổi bật",
+    "popularAlbum": "Album phổ biến",
+    "popularRadio": "Radio phổ biến",
+    "featuredCharts": "Bảng xếp hạng nổi bật",
+    "musicPlaylist": "Danh sách phát nhạc trực tuyến",
+    "showAll": "Hiển thị tất cả",
+    "artist": "Nghệ sĩ"
   }
 }
