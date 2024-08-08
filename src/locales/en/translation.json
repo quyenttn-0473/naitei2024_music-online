@@ -79,7 +79,14 @@
     "failedToCreateGenre": "Failed to create genre.",
     "genreAlreadyExists": "Genre name already taken",
     "countSongsByGenre": "Error counting songs by genre",
-    "userNotFound": "User Not Found!"
+    "userNotFound": "User Not Found!",
+    "invalidAuthorId": "Invalid author ID",
+    "authorNotFound": "Author not found",
+    "failedToFetchAuthors": "Failed to fetch authors.",
+    "failedToCreateAuthor": "Failed to create author.",
+    "failedToUpdateAuthor": "Failed to update author.",
+    "failedToDeleteAuthor": "Failed to delete author.",
+    "authorAlreadyExists": "An author with this name already exists"
   },
   "success": {
     "createSuccess": "Create Success",
@@ -99,7 +106,11 @@
     "successfullyCreated": "Successfully created.",
     "successfullyUpdated": "Successfully updated.",
     "successfullyDeleted": "Successfully deleted.",
-    "confirmation_delete": "Are you sure you want to delete?"
+    "confirmation_delete": "Are you sure you want to delete?",
+    "errorOccurred": "An error occurred: {{error}}"
+  },
+  "warning": {
+    "authorHasSongs": "Tác giả không thể bị xóa vì có bài hát thuộc về họ."
   },
   "genres": {
     "title": "Genre List",
@@ -111,6 +122,29 @@
     "confirmDeleteGenre": "Are you sure you want to delete the genre: {{name}}",
     "deleteGenre": "Delete Genre",
     "songCount": "Number of Songs"
+  },
+  "authors": {
+    "createAuthor": "Create Author",
+    "fullName": "Full Name",
+    "avatar": "Avatar",
+    "dateOfBirth": "Date of Birth",
+    "biography": "Biography",
+    "authorListTitle": "Author List",
+    "noImage": "No Image",
+    "updateAuthor": "Update Author",
+    "currentAvatar": "Current Avatar",
+    "deleteAuthor": "Delete Author",
+    "confirmDeleteAuthor": "Are you sure you want to delete the author: {{fullname}}",
+    "songs": "Songs",
+    "noSongs": "No Songs Available",
+    "lyrics": "Lyrics",
+    "authorCreated": "Author successfully created.",
+    "authorUpdated": "Author successfully updated.",
+    "authorDeleted": "Author successfully deleted.",
+    "authorAlreadyExists": "An author with this name already exists",
+    "failedToCreateAuthor": "Failed to create author.",
+    "failedToUpdateAuthor": "Failed to update author.",
+    "failedToDeleteAuthor": "Failed to delete author."
   },
   "common": {
     "edit": "Edit",

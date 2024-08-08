@@ -1,0 +1,36 @@
+extends ../layout_admin
+
+block content
+  .container
+    h1.my-4= author.fullname
+
+    .row
+      .col-md-4
+        if author.avatar
+          img(src=author.avatar, alt=author.fullname, class='img-fluid rounded')
+        else
+          .bg-secondary.text-white.text-center.d-flex.align-items-center.justify-content-center
+            | #{t('authors.noImage')}
+
+      .col-md-8
+        p
+          strong #{t('authors.dateOfBirth')}:
+          | #{new Date(author.dateOfBirth).toDateString()}
+
+        .mt-4
+          h3 #{t('authors.songs')}
+          if author.songs && author.songs.length > 0
+            ul.list-group
+              each song in author.songs
+                li.list-group-item
+                  | #{song.title} - #{song.artist}
+                  if song.lyrics
+                    p.mt-2.text-muted
+                      | #{t('authors.lyrics')}: #{song.lyrics.substring(0, 100)}
+          else
+            p #{t('authors.noSongs')}
+
+    .mt-4
+      a.btn.btn-primary(href=`/admin/authors/update/${author.id}`) #{t('common.edit')}
+      a.btn.btn-danger(href=`/admin/authors/delete/${author.id}`) #{t('common.delete')}
+      a.btn.btn-success(href='/admin/authors') #{t('authors.authorListTitle')}

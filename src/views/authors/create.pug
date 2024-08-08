@@ -1,0 +1,26 @@
+extends ../layout_admin
+
+block content
+  .container
+    h1 #{t('authors.createAuthor')}
+
+    if flash && flash.success
+      .alert.alert-success
+        | #{flash.success}
+
+    if flash && flash.error
+      .alert.alert-danger
+        | #{flash.error}
+
+    form(action='/admin/authors/create', method='post', enctype='multipart/form-data')
+      div.form-group
+        label(for='fullname') #{t('authors.fullName')}
+        input.form-control(id='fullname', type='text', name='fullname', required)
+      div.form-group
+        label(for='avatar') #{t('authors.avatar')}
+        input.form-control-file(id='avatar', type='file', name='avatar')
+      div.form-group
+        label(for='dateOfBirth') #{t('authors.dateOfBirth')}
+        input.form-control(id='dateOfBirth', type='date', name='dateOfBirth', required)
+      div
+        button.btn.btn-primary(type='submit') #{t('authors.createAuthor')}

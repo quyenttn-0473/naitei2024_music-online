@@ -1,0 +1,20 @@
+extends ../layout_admin
+
+block content
+  .container
+    h1.my-4= t('authors.authorListTitle')
+    ul.list-group
+      each author in authors
+        li.list-group-item.d-flex.justify-content-between.align-items-center
+          .d-flex.align-items-center
+            if author.avatar
+              img(src=author.avatar, alt=author.fullname, class='rounded-circle author-avatar')
+            else
+              .bg-secondary.text-white.rounded-circle.d-flex.align-items-center.justify-content-center.no-avatar
+                | #{t('authors.noImage')}
+            .ml-2
+              a(href=`/admin/authors/${author.id}`, class='text-decoration-none text-success')
+                h5.mb-1= author.fullname
+              small #{t('authors.dateOfBirth')}: #{new Date(author.dateOfBirth).toDateString()}
+    .mt-4
+      a.btn.btn-success(href='/admin/authors/create') #{t('authors.createAuthor')}
