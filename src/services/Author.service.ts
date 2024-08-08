@@ -70,9 +70,9 @@ export const deleteAuthor = async (authorId: number, t: TFunction) => {
   try {
     const author = await authorRepository.findOne({
       where: { id: authorId },
-      relations: ['songs']
+      relations: ['songs'],
     });
-    
+
     if (!author) {
       throw new Error(t('error.authorNotFound'));
     }

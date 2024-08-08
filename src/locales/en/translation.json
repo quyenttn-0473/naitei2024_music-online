@@ -86,7 +86,8 @@
     "failedToCreateAuthor": "Failed to create author.",
     "failedToUpdateAuthor": "Failed to update author.",
     "failedToDeleteAuthor": "Failed to delete author.",
-    "authorAlreadyExists": "An author with this name already exists"
+    "authorAlreadyExists": "An author with this name already exists",
+    "sortSongsByUpdatedAt": "An error occurred while sorting songs by update date."
   },
   "success": {
     "createSuccess": "Create Success",
@@ -151,5 +152,15 @@
     "delete": "Delete",
     "create": "Create",
     "cancel": "Cancel"
+  },
+  "guess_page": {
+    "popularArtist": "Popular artists",
+    "popularAlbum": "Popular albums",
+    "popularRadio": "Popular radio",
+    "featuredCharts": "Fearture Charts",
+    "musicPlaylist": "Music Online Playlists",
+    "newSongs": "New Songs",
+    "showAll": "Show all",
+    "artist": "Artist"
   }
 }

@@ -86,7 +86,8 @@
     "failedToCreateAuthor": "Không Thể Tạo Tác Giả.",
     "failedToUpdateAuthor": "Không Thể Cập Nhật Tác Giả.",
     "failedToDeleteAuthor": "Không Thể Xóa Tác Giả.",
-    "authorAlreadyExists": "Tác Giả Với Tên Này Đã Tồn Tại"
+    "authorAlreadyExists": "Tác Giả Với Tên Này Đã Tồn Tại",
+    "sortSongsByUpdatedAt": "Đã xảy ra lỗi khi sắp xếp các bài hát theo ngày cập nhật."
   },
   "success": {
     "createSuccess": "Tạo Thành Công",
@@ -151,5 +152,15 @@
     "delete": "Xóa",
     "create": "Tạo Mới",
     "cancel": "Hủy"
+  },
+  "guess_page": {
+    "popularArtist": "Nghệ sĩ nổi bật",
+    "popularAlbum": "Album phổ biến",
+    "popularRadio": "Radio phổ biến",
+    "featuredCharts": "Bảng xếp hạng nổi bật",
+    "musicPlaylist": "Danh sách phát nhạc trực tuyến",
+    "newSongs": "Bài hát mới",
+    "showAll": "Hiển thị tất cả",
+    "artist": "Nghệ sĩ"
   }
 }

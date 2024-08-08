@@ -1,13 +1,41 @@
 extends layout
 
 block content
-  h1.text-center.mb-4= t('content.discover_new_music')
-  .row
-    each track in tracks
-      .col-md-3.mb-4
-        .card
-          img.card-img-top(src=track.image, alt=track.title)
-          .card-body
-            h5.card-title= track.title
-            p.card-text= t('content.artist', { artist: track.artist })
-            a.btn.btn-primary(href="#")= t('content.play')
+  .combo_back.px-4
+    a.btn.btn_back.d-cursor-not-allowed.mr-2
+      i.fas.fa-chevron-left.d-cursor-not-allowed
+    a.btn.btn_back.d-cursor-not-allowed
+      i.fas.fa-chevron-right.d-cursor-not-allowed
+  .artists.px-4
+    .d-flex.justify-content-between.mt-4
+      a(href="/section/artists").title #{t('guess_page.popularArtist')}
+      a.text-light(href="/section/artists")  #{t('guess_page.showAll')}
+    ul.d-flex.mt-3.single-line
+      each author, index in authors
+        if index < 6
+          li.item(role="button") 
+            img.avatar.circle(src=author.avatar, alt=author.fullname)
+            a.full_name(href="#") #{author.fullname}
+            p.artist #{t('guess_page.artist')}
+  .albums.px-4
+    .d-flex.justify-content-between.mt-4
+      a(href="/section/albums").title #{t('guess_page.popularAlbum')}
+      a.text-light(href="/section/albums")  #{t('guess_page.showAll')}
+    ul.d-flex.mt-3.pl-0
+      each album, index in albums
+        if index < 6
+          li.item(role="button") 
+            img.avatar.square(src=album.imageUrl, alt=album.title)
+            a.full_name(href="#") #{album.title}
+            p.artist #{album.author.fullname}
+  .songs.px-4
+    .d-flex.justify-content-between.mt-4
+      a.title #{t('guess_page.newSongs')}
+      a.text-light(href="/section/songs")  #{t('guess_page.showAll')}
+    ul.d-flex.mt-3.pl-0
+      each song, index in songs   
+        if index < 6
+          li.item(role="button") 
+            img.avatar.square(src=song.imageUrl, alt=song.title)
+            a.full_name(href="#") #{song.title}
+            p.artist #{song.artist}

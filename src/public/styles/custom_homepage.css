@@ -146,3 +146,91 @@ body {
   border-top: 1px solid #444;
   margin: 10px 0;
 }
+
+a.title {
+  color: #fff;
+  font-size: 25px;
+}
+
+.title {
+  font-weight: 600;
+}
+
+img.avatar {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+img.avatar.circle {
+  border-radius: 50%;
+}
+
+img.avatar.square {
+  border-radius: 10px;
+}
+
+li.item {
+  padding: 10px;
+  border-radius: 5px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  width: 170px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+li.item:hover {
+  background-color: #000;
+  cursor: pointer;
+}
+
+a.full_name {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+}
+
+p.artist {
+  margin-bottom: 0;
+  font-size: 15px;
+  color: #b3b3b3;
+}
+
+.d-none {
+  display: none
+}
+
+.artists ul,
+.albums ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+
+a.btn_back {
+  color: #a7a5a5;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  background-color: #2f2f2f;
+  font-size: 20px;
+}
+
+.d-cursor-not-allowed:hover {
+  cursor: not-allowed;
+  color: #a7a5a5;
+}
+
+.d-cursor-pointer {
+  color: #fff;
+}
+
+.d-cursor-pointer:hover {
+  cursor: pointer;
+  color: #ffffff;
+}

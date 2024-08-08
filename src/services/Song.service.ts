@@ -11,3 +11,16 @@ export const countSongsByGenreId = async (genreId: number, t: TFunction) => {
     throw new Error(t('error.countSongsByGenre'));
   }
 };
+
+export const songsSortByUpdatedAt = async (t: TFunction) => {
+  try {
+    const songs = await songRepository.find();
+    const sortedSongs = songs.sort((a, b) => {
+      return b.updatedAt.getTime() - a.updatedAt.getTime();
+    });
+
+    return sortedSongs;
+  } catch (error) {
+    throw new Error(t('error.sortSongsByUpdatedAt'));
+  }
+};

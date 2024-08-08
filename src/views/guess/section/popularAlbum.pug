@@ -1,0 +1,18 @@
+extends ../../layout
+
+block content
+  .combo_back.px-4
+    a.btn.btn_back.d-cursor-pointer.mr-2(href="/") 
+      i.fas.fa-chevron-left.d-cursor-pointer
+    a.btn.btn_back.d-cursor-not-allowed(href="") 
+      i.fas.fa-chevron-right.d-cursor-not-allowed
+  .albums.px-4
+    .d-flex.justify-content-between.mt-4
+      h2.title #{t('guess_page.popularAlbum')}
+    ul.d-flex.mt-3.pl-0
+      each album in albums
+        li.item(role="button") 
+          img.avatar.square(src=album.imageUrl, alt=album.title)
+          a.full_name(href="#") #{album.title}
+          p.artist #{album.author.fullname}
+  

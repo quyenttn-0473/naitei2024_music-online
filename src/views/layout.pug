@@ -5,6 +5,7 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title #{title}
     link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     link(rel="stylesheet", href="/styles/custom_homepage.css")
     link(rel="stylesheet" href="/styles/style.css")
     script(src="/scripts/jquery.min.js")
@@ -12,11 +13,10 @@ html(lang="en")
     script(src="/scripts/bootstrap.min.js")
     script(src="/scripts/bootstrap.bundle.min.js")
     script(src="/scripts/jquery-3.7.1.min.js")
-    
 
   body
     nav.navbar.navbar-dark
-      a.navbar-brand(href="#")= t('navbar.brand')
+      a.navbar-brand(href="/")= t('navbar.brand')
       div.navbar-right
         a.btn.btn-login(href="/login") #{t('navbar.login')}
         span.language-selector
@@ -29,13 +29,16 @@ html(lang="en")
         ul.nav.flex-column
           li.nav-item.active
             a.nav-link(href="#")
+              i.fa-solid.fa-house
               = t('sidebar.home')
               span.sr-only (current)
           li.nav-item
             a.nav-link(href="#")
+              i.fa-solid.fa-magnifying-glass
               = t('sidebar.search')
           li.nav-item
             a.nav-link(href="#")
+              i.fas.fa-swatchbook
               = t('sidebar.library')
           li.nav-item.divider
             hr

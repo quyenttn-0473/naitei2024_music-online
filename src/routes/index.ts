@@ -1,4 +1,9 @@
-import { homepage } from '../controllers/guess/index.controller';
+import {
+  homepage,
+  showSectionAlbum,
+  showSectionArtist,
+  showSectionSong,
+} from '../controllers/guess/index.controller';
 import { Router } from 'express';
 import index from './admin/index';
 import validateRequest from '@src/middleware/validate-request.middleware';
@@ -26,5 +31,9 @@ router.get('/logout', UserController.logout);
 router.get('/error', (req, res) => {
   res.render('error', { title: req.t('error.title') });
 });
+
+router.get('/section/artists', showSectionArtist);
+router.get('/section/albums', showSectionAlbum);
+router.get('/section/songs', showSectionSong);
 
 export default router;
