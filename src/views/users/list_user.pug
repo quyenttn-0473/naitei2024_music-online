@@ -9,7 +9,6 @@ block content
     if success_msg.length
       #successAlert.alert.alert-success
         | #{success_msg}
-    a.mb-3.btn.btn-success.w-50(href="/admin/users/create") #{t('action.create')} #{t('action.new')} #{t('option.user')}
     if users.length === 0
       p.text-light #{t('message.userNotFound')}
     else
@@ -22,6 +21,28 @@ block content
               small #{t('form.email')}: #{user.email}
               br
               small #{t('form.dateOfBirth')}: #{user.dateOfBirth}
+      if totalPages > 1
+      .pagination.justify-content-center.mt-4
+        if currentPage > 1
+          li.page-item
+            a.page-link(href=`/admin/users?page=${currentPage - 1}`) &laquo;
+        else
+          li.page-item.disabled
+            span.page-link &laquo;
+        each page in [...Array(totalPages).keys()].map(n => n + 1)
+          if page === currentPage
+            li.page-item.active
+              span.page-link #{page}
+          else
+            li.page-item
+              a.page-link(href=`/admin/users?page=${page}`) #{page}
+
+        if currentPage < totalPages
+          li.page-item
+            a.page-link(href=`/admin/users?page=${currentPage + 1}`) &raquo;
+        else
+          li.page-item.disabled
+            span.page-link &raquo;
 
   block scripts
     script(src="/js/user.js")

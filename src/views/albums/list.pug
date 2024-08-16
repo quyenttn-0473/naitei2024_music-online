@@ -23,6 +23,28 @@ block content
               a.text-decoration-none.text-success(href=`/admin/albums/${album.id}`)
                 h5.mb-1= album.title
               p #{t('form.releaseDate')}: #{album.releaseDate.toDateString()}
+    if totalPages > 1
+      .pagination.justify-content-center.mt-4
+        if currentPage > 1
+          li.page-item
+            a.page-link(href=`/admin/albums?page=${currentPage - 1}`) &laquo;
+        else
+          li.page-item.disabled
+            span.page-link &laquo;
+        each page in [...Array(totalPages).keys()].map(n => n + 1)
+          if page === currentPage
+            li.page-item.active
+              span.page-link #{page}
+          else
+            li.page-item
+              a.page-link(href=`/admin/albums?page=${page}`) #{page}
+
+        if currentPage < totalPages
+          li.page-item
+            a.page-link(href=`/admin/albums?page=${currentPage + 1}`) &raquo;
+        else
+          li.page-item.disabled
+            span.page-link &raquo;
 
   block scripts
     script(src="/js/user.js")

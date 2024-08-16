@@ -5,6 +5,8 @@ block stylesheets
 
 block content
   .container
+    a.btn.btn_back.d-cursor-pointer.mb-2(href=`/admin/albums/${album.id}`) 
+      i.fas.fa-chevron-left.d-cursor-pointer.d-flex.justify-content-center
     h1 #{t('common.edit')} #{t('option.album')}
     form#albumForm(action=`/admin/albums/update/${album.id}?_method=PUT` method="POST" enctype="multipart/form-data") 
       input(type="hidden" name="_method" value="PUT")

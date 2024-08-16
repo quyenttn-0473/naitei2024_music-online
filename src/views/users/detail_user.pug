@@ -4,7 +4,9 @@ block stylesheets
   link(rel="stylesheet", href="/styles/custom_detail.css")
 
 block content 
-  .container.mx-auto
+  .container
+    a.btn.btn_back.d-cursor-pointer(href=`/admin/users`) 
+      i.fas.fa-chevron-left.d-cursor-pointer
     h1.my-4.text-light.text-center #{t('title_user_detail')} 
     if user
       .list-group-item.d-flex.justify-content-between.align-items-center.bg-dark.text-light
@@ -16,18 +18,17 @@ block content
           p #{t('form.email')}: #{user.user_email}
           p #{t('form.dateOfBirth')}: #{dateOfBirth}
           p #{t('form.role')}: #{user.user_role} 
+          p #{t('form.status')}: 
+            if user.user_status === Deactive
+              a.text-decoration-none.text-danger #{user.user_status}
+            else 
+              a.text-decoration-none.text-light #{user.user_status}
           p #{t('form.commentCount')}: #{user.commentCount} 
           p #{t('form.favoriteSongCount')}: #{user.favoriteSongCount} 
           p #{t('form.suggestedSongCount')}: #{user.suggestedSongCount} 
           p #{t('form.playlistCount')}: #{user.playlistCount} 
           .d-flex
-            a.btn.btn-outline-success(href="/admin/users/") #{t('action.list')} 
-            a.btn.btn-outline-primary(href=`/admin/users/update/${user.user_id}`) #{t('common.edit')} 
-            form#formDelete(action=`/admin/users/delete/${user.user_id}?_method=DELETE`, method='POST', onsubmit=`return confirmDeletion()`)
-              input(type='hidden', name='_method', value='DELETE')
-              button.btn.btn-outline-danger(type='submit') #{t('common.delete')}
-          p#confirmation-message #{t('message.confirmation_delete')}
-            
+            a.btn.btn-outline-primary(href=`/admin/users/update/${user.user_id}`) #{t('common.edit')}             
     else 
       h2.text-danger #{t('error.userNotFound')}
 

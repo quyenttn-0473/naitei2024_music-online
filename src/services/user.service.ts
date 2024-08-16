@@ -1,10 +1,10 @@
 import { AppDataSource } from '@src/config/data-source';
 import { User } from '@src/entities/User.entity';
-class UserService {
-  private userRepository = AppDataSource.getRepository(User);
 
+const userRepository = AppDataSource.getRepository(User);
+class UserService {
   public async findByUsername(username: string) {
-    return await this.userRepository.findOne({
+    return await userRepository.findOne({
       where: {
         username: username,
       },
@@ -12,7 +12,7 @@ class UserService {
   }
   public async create(userData: Partial<User>): Promise<boolean> {
     const user = new User(userData);
-    return this.userRepository
+    return userRepository
       .save(user)
       .then(() => true)
       .catch(() => {
@@ -20,10 +20,10 @@ class UserService {
       });
   }
   public async findUsers() {
-    return await this.userRepository.find();
+    return await userRepository.find();
   }
   public async findById(id: number) {
-    return await this.userRepository
+    return await userRepository
       .createQueryBuilder('user')
       .leftJoinAndSelect('user.comments', 'comment')
       .leftJoinAndSelect('user.favoriteSongs', 'favoriteSong')
@@ -41,12 +41,12 @@ class UserService {
   }
   public async update(id: number, userData: Partial<User>): Promise<boolean> {
     try {
-      const user = await this.userRepository.findOne({ where: { id } });
+      const user = await userRepository.findOne({ where: { id } });
       if (!user) {
         return false;
       }
       Object.assign(user, userData);
-      await this.userRepository.save(user);
+      await userRepository.save(user);
       return true;
     } catch (error) {
       return false;
@@ -54,7 +54,7 @@ class UserService {
   }
   public async delete(id: number) {
     try {
-      await this.userRepository.delete(id);
+      await userRepository.delete(id);
       return true;
     } catch (error) {
       return false;
@@ -63,3 +63,19 @@ class UserService {
 }
 
 export default new UserService();
+
+export const getUserPage = async (
+  page: number,
+  pageSize: number,
+  sortField: keyof User = 'username',
+  sortOrder: 'ASC' | 'DESC' = 'ASC'
+) => {
+  const [users, total] = await userRepository.findAndCount({
+    skip: (page - 1) * pageSize,
+    take: pageSize,
+    order: {
+      [sortField]: sortOrder,
+    },
+  });
+  return { users, total };
+};

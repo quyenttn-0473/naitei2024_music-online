@@ -13,7 +13,7 @@ import { Playlist } from './Playlist.entity';
 import { Song } from './Song.entity';
 import { Comment } from './Comment.entity';
 import { SuggestedSong } from './SuggestedSong.entity';
-import { UserRoles } from '../enums/UserRoles.enum';
+import { UserRoles, UserStatus } from '../enums/UserRoles.enum';
 
 @Entity()
 export class User extends BaseEntity {
@@ -38,6 +38,13 @@ export class User extends BaseEntity {
     default: UserRoles.Guess,
   })
   role: UserRoles;
+
+  @Column({
+    type: 'enum',
+    enum: UserStatus,
+    default: UserStatus.Active,
+  })
+  status: UserStatus;
 
   @CreateDateColumn()
   createdAt: Date;

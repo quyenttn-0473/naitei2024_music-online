@@ -16,7 +16,9 @@ export const countSongsByGenreId = async (req: Request, genreId: number) => {
 
 export const getAllSongs = async (req: Request) => {
   try {
-    return await songRepository.find();
+    return await songRepository.find({
+      relations: ['album'],
+    });
   } catch (error) {
     throw new Error(req.t('error.failedToFetchSongs'));
   }

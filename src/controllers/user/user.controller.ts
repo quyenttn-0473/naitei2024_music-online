@@ -3,7 +3,7 @@ import UserService from '@src/services/user.service';
 import { Request, Response } from 'express';
 import { t } from 'i18next';
 import { comparePassword, hashPassword } from '@src/utils/passwordUtils';
-import { UserRoles } from '@src/enums/UserRoles.enum';
+import { UserRoles, UserStatus } from '@src/enums/UserRoles.enum';
 import { User } from '@src/entities/User.entity';
 import { getAuthors } from '@src/services/Author.service';
 import { getAlbums } from '@src/services/Album.service';
@@ -81,7 +81,10 @@ export class UserController {
         req.flash('error_msg', t('error.passwordIncorrect'));
         return res.redirect('/login');
       }
-
+      if (user.status === UserStatus.Deactive) {
+        req.flash('error_msg', t('error.accountLocked'));
+        return res.redirect('/login');
+      }
       // Xử lý đăng nhập thành công
       (req.session as any).user = user;
       if (user.role === UserRoles.User) {

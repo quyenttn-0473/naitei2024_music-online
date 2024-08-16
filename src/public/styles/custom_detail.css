@@ -30,19 +30,20 @@ a:hover {
 
 a.btn {
   display: inline-block;
-  padding: 10px 20px;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  border-radius: 25px;
+  border-radius: 10px;
   margin-right: 10px;
   transition: background-color 0.3s, color 0.3s;
 }
 
 a.btn-primary {
-  background-color: #1db954;
+  background-color: #007bff;
+  border-color: #007bff;
   color: #ffffff;
+  padding: 5px 10px;
 }
 
 a.btn-primary:hover {
@@ -123,12 +124,14 @@ form#formDelete button.btn:hover {
 
 button.btn {
   font-size: 16px;
-  padding: 10px 20px;
-  border-radius: 50px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 button.btn-primary {
-  background-color: #1db954;
+  background-color: #0D6EFD;
   border: none;
 }
 
@@ -181,7 +184,7 @@ button.btn-success:hover {
 
 .song-avatar {
   border-radius: 5px;
-  height: 70px;
+  height: 100px;
   margin-left: 10px;
   width: 100px;
   object-fit: cover;
@@ -199,4 +202,14 @@ button.btn.btn-outline-danger {
 
 .modal-title {
   color: #000000;
+}
+
+.list-group-750 {
+  width: 750px;
+}
+
+.dis {
+  pointer-events: none;
+  cursor: default;
+  color: #6C757D;
 }

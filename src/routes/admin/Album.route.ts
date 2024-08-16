@@ -25,4 +25,7 @@ router.put(
 router.get('/delete/:id', AlbumController.getDelete);
 router.delete('/delete/:id', AlbumController.postDelete);
 
+router.post('/add-song/:id', AlbumController.addSongPost);
+router.post('/remove-song/:id', AlbumController.removeSongPost);
+
 export default router;

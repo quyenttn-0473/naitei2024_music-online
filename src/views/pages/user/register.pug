@@ -28,6 +28,9 @@ block content
                 label.form-label(for="confirmPassword")= t('form.confirm_password')
                 input.form-control(type="password" name="confirmPassword" id="confirmPassword" placeholder="Abcd@1234" required)
                 p#passwordError.text-danger= t('error.passwordIncorrect')
+              .mb-3
+                label.form-label(for="dateOfBirth")= t('form.dateOfBirth')
+                input.form-control(type="date" name="dateOfBirth" id="dateOfBirth" required)
               button.btn.btn-success.fw-bold.w-100(type="submit")= t('action.register')
           .card-footer
             p #{t('message.or')}

@@ -82,11 +82,11 @@ $(document).ready(function () {
     }
   });
 
-  $('#toggleBio').on('click', function() {
+  $('#toggleBio').on('click', function () {
     const bioContent = $('.bio-content');
     const showMoreText = "#{t('common.showMore')}";
     const showLessText = "#{t('common.showLess')}";
-    
+
     if (bioContent.css('max-height') === 'none') {
       bioContent.css('max-height', '100px');
       $(this).text(showMoreText);
@@ -105,4 +105,18 @@ $(document).ready(function () {
 function confirmDeletion(message) {
   var message = $('#confirmation-message').text();
   return confirm(message);
+}
+function toggleReasonLockUser() {
+  const statusSelect = document.getElementById('status');
+  const reasonLockUser = document.getElementById('reasonLockUser');
+  const selectedStatus = statusSelect.value;
+  const DeactiveStatus = 'Deactive';
+  const reasonInput = document.getElementById('reason');
+  if (selectedStatus === DeactiveStatus) {
+    reasonLockUser.classList.remove('d-none');
+    reasonInput.setAttribute('required', 'required');
+  } else {
+    reasonLockUser.classList.add('d-none');
+    reasonInput.removeAttribute('required');
+  }
 }

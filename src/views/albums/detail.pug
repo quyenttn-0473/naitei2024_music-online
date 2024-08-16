@@ -2,10 +2,13 @@ extends ../layout_admin
 
 block stylesheets
   link(rel="stylesheet", href="/styles/custom_list.css")
+  link(rel="stylesheet", href="/styles/custom_detail_playlist.css")
   link(rel="stylesheet", href="/styles/custom_detail.css")
 
 block content 
   .container 
+    a.btn.btn_back.d-cursor-pointer(href=`/admin/albums`) 
+      i.fas.fa-chevron-left.d-cursor-pointer
     h1.text-center #{t('common.detail')} #{t('option.album')}
     if error_msg.length
         #errorAlert.alert.alert-danger #{error_msg}
@@ -19,15 +22,60 @@ block content
           a(href=`/admin/authors/${author.id}`).mt-2 #{author.fullname}
         h5.mt-2 #{t('message.numberSong')}: #{countSong}
         .d-flex.pt-2
-          a.btn.btn-outline-success(href="/admin/albums") #{t('action.list')} #{t('option.album')}
+          if countSong !== 0
+            button.btn.btn-outline-success.mr-2(type="button" data-toggle="modal" data-target="#audioPlayerModal" onclick=`updateAudioPlayer("${songs[0].url}"), ${0}`) #{t('content.play')}
+            a.btn.btn-outline-secondary.dis #{t('common.delete')} 
+          else 
+            a.btn.btn-outline-success.dis(href="/admin/albums") #{t('footer.play')}
+            a.btn.btn-outline-danger(href=`/admin/albums/delete/${album.id}`) #{t('common.delete')} 
           a.btn.btn-outline-primary(href=`/admin/albums/update/${album.id}`) #{t('common.edit')} 
-          a.btn.btn-outline-danger(href=`/admin/albums/delete/${album.id}`) #{t('common.delete')} 
     .row.mt-3
-      ul.list-group 
-        each song in songs 
-          li.list-group-item.d-flex.justify-content-between
-            .col-9
+      ul.list-group-750.pl-2 
+        each song, index in songs 
+          li.list-group-item.d-flex.justify-content-between.playlist-song(data-song-url=song.url)
+            .col-6
               a(href=`/admin/musics/${song.id}`)
                 h5.mb-1= song.title
               h5 #{t('songs.form.artist')}: #{song.artist}
-            img.song-avatar(src=song.imageUrl, alt=album.title)
+            .col-3
+              img.song-avatar(src=song.imageUrl, alt=album.title)
+            .col-3.d-flex
+              button.btn.btn-primary.ml-2(type="button" data-toggle="modal" data-target="#audioPlayerModal" onclick=`updateAudioPlayer("${song.url}"), ${index}`) #{t('content.play')}
+              //- a.btn.btn-danger(href=`/admin/albums/remove-song/${album.id}`) #{t('common.delete')} 
+              form(action=`/admin/albums/remove-song/${album.id}`, method='post', class='form-inline')
+                input(type='hidden', name='songId', value=song.id)
+                button.btn.btn-danger(type='submit') #{t('playlist.remove')}
+    h1.text-center.mt-4
+      button.btn.btn-success.text-light(type="button", data-toggle="modal" data-target="#findMoreModal") #{t('playlist.findMore')}
+
+    .modal.fade(id='findMoreModal', tabindex='-1', role='dialog')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            h5.modal-title= t('playlist.findMoreSongs')
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true')
+          .modal-body
+            if availableSongs && availableSongs.length
+              ul.list-group
+                each song in availableSongs
+                  li.list-group-item.d-flex.justify-content-between.align-items-center
+                    .d-flex.align-items-center
+                      if song.imageUrl
+                        img(src=song.imageUrl, alt=song.title, class='rounded-circle song-image')
+                      else
+                        .bg-secondary.text-white.rounded-circle.d-flex.align-items-center.justify-content-center.no-image
+                          = t('playlist.noImage')
+                      .ml-2
+                        a(href=`/admin/musics/${song.id}`, class='text-decoration-none')
+                          h5.mb-1= song.title
+                        small: = song.artist  
+                        | &nbsp;
+                        small : #{new Date(song.createdAt).toDateString()}
+                    form(action=`/admin/albums/add-song/${album.id}`, method='post', class='form-inline ml-5')
+                      input(type='hidden', name='songId', value=song.id)
+                      button.btn.btn-success(type='submit') #{t('playlist.add')}
+            else 
+              p.text-danger #{t('error.noAvailableSongs')}
+    
+
