@@ -13,6 +13,8 @@ block content
       each song in songs
         li.item(role="button") 
           img.avatar.square(src=song.imageUrl, alt=song.title)
-          a.full_name(href="#") #{song.title}
-          p.artist #{song.artist}
-  
+          a.full_name(data-url=`/songs/${song.id}`) #{song.title}
+          p.artist #{song.author.fullname}
+
+  block scripts
+    script(src="/js/guess.js")

@@ -15,7 +15,7 @@ block content
         if index < 6
           li.item(role="button") 
             img.avatar.circle(src=author.avatar, alt=author.fullname)
-            a.full_name(href="#") #{author.fullname}
+            a.full_name(data-url=`/authors/${author.id}`) #{author.fullname}
             p.artist #{t('guess_page.artist')}
   .albums.px-4
     .d-flex.justify-content-between.mt-4
@@ -26,7 +26,7 @@ block content
         if index < 6
           li.item(role="button") 
             img.avatar.square(src=album.imageUrl, alt=album.title)
-            a.full_name(href="#") #{album.title}
+            a.full_name(data-url=`/albums/${album.id}`) #{album.title}
             p.artist #{album.author.fullname}
   .songs.px-4
     .d-flex.justify-content-between.mt-4
@@ -37,5 +37,8 @@ block content
         if index < 6
           li.item(role="button") 
             img.avatar.square(src=song.imageUrl, alt=song.title)
-            a.full_name(href="#") #{song.title}
-            p.artist #{song.artist}
+            a.full_name(data-url=`/songs/${song.id}`) #{song.title}
+            p.artist #{song.author.fullname}
+
+  block scripts
+    script(src="/js/guess.js")

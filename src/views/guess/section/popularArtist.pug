@@ -13,6 +13,8 @@ block content
       each author in authors
         li.item(role="button")
           img.avatar.circle(src=author.avatar, alt=author.fullname)
-          a.full_name(href="#") #{author.fullname}
+          a.full_name(data-url=`/authors/${author.id}`) #{author.fullname}
           p.artist #{t('guess_page.artist')}
-  
+
+  block scripts
+    script(src="/js/guess.js")

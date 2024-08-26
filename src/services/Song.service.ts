@@ -19,9 +19,8 @@ export const countSongsByGenreId = async (req: Request, genreId: number) => {
 
 export const getAllSongs = async (req: Request, role?: string) => {
   try {
-    const whereCondition = role === UserRoles.User
-      ? { status: Not(SongStatus.Deleted) }
-      : {};
+    const whereCondition =
+      role === UserRoles.User ? { status: Not(SongStatus.Deleted) } : {};
 
     return await songRepository.find({
       where: whereCondition,
@@ -86,7 +85,11 @@ export const getSongsByGenreId = async (req: Request, genreId: number) => {
   }
 };
 
-export const getSongsByAuthorId = async (req: Request, authorId: number, role?: string) => {
+export const getSongsByAuthorId = async (
+  req: Request,
+  authorId: number,
+  role?: string
+) => {
   try {
     const whereCondition: FindOptionsWhere<Song> = { author: { id: authorId } };
 
@@ -186,6 +189,26 @@ export const songsSortByUpdatedAt = async (req: Request) => {
     throw new Error(req.t('error.sortSongsByUpdatedAt'));
   }
 };
+export const songsSortByUpdatedAtWithStatus = async (
+  req: Request,
+  status: SongStatus
+) => {
+  try {
+    const songs = await songRepository.find({
+      where: {
+        status: status as SongStatus,
+      },
+      relations: ['author'],
+    });
+    const sortedSongs = songs.sort((a, b) => {
+      return b.updatedAt.getTime() - a.updatedAt.getTime();
+    });
+
+    return sortedSongs;
+  } catch (error) {
+    throw new Error(req.t('error.sortSongsByUpdatedAt'));
+  }
+};
 export const getSongCountByAlbumId = async (id: number) => {
   return await songRepository.count({
     where: { album: { id } },
@@ -196,17 +219,26 @@ export const searchSongs = async (query: string, role?: string) => {
   let songQuery = songRepository
     .createQueryBuilder('song')
     .leftJoinAndSelect('song.author', 'author')
-    .where('(song.title LIKE :query OR author.fullname LIKE :query)', { query: `%${query}%` });
+    .where('(song.title LIKE :query OR author.fullname LIKE :query)', {
+      query: `%${query}%`,
+    });
 
   if (role === UserRoles.User || role === UserRoles.Guess) {
-    songQuery = songQuery.andWhere('song.status != :status', { status: SongStatus.Deleted });
+    songQuery = songQuery.andWhere('song.status != :status', {
+      status: SongStatus.Deleted,
+    });
   }
 
   let songs = await songQuery.getMany();
   return songs;
 };
 
-export const getSongsBySameAuthor = async (req: Request, authorId: number, excludeSongId: number, role?: string) => {
+export const getSongsBySameAuthor = async (
+  req: Request,
+  authorId: number,
+  excludeSongId: number,
+  role?: string
+) => {
   const whereCondition: any = {
     author: { id: authorId },
     id: Not(excludeSongId),
@@ -225,4 +257,3 @@ export const getSongsBySameAuthor = async (req: Request, authorId: number, exclu
     throw new Error(req.t('error.failedToFetchSongsBySameAuthor'));
   }
 };
-

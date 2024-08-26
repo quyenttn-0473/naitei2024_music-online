@@ -13,6 +13,8 @@ block content
       each album in albums
         li.item(role="button") 
           img.avatar.square(src=album.imageUrl, alt=album.title)
-          a.full_name(href="#") #{album.title}
+          a.full_name(data-url=`/albums/${album.id}`) #{album.title}
           p.artist #{album.author.fullname}
-  
+
+  block scripts
+    script(src="/js/guess.js")
