@@ -1,0 +1,53 @@
+extends ../layout_admin
+
+block stylesheets
+  link(rel="stylesheet", href="/styles/custom_detail.css")
+
+block content
+  .container
+    a.btn.btn_back.d-cursor-pointer(href=`/admin/suggest-song`) 
+      i.fas.fa-chevron-left.d-cursor-pointer
+    h1.my-4.text-light.text-center #{t('suggest_song.title_detail')} 
+    
+      h2 #{song.title}
+      .row
+        .col-md-6
+          .card-songs-detail
+            img.card-img-top(src=song.imageUrl alt="Song Image")
+            .card-body
+              h2.card-title= song.title
+              p.card-text
+                | #{t('content.artist')}
+                b= song.author.fullname
+              p.card-text
+                | #{t('content.genres')}
+                each genre in song.genres
+                  a.btn.btn-success(href=`/admin/genres/${genre.id}`) #{genre.name}
+        .col-md-6
+          .card-songs-detail
+            .card-body.d-flex
+              button.btn.btn-primary(type="button" data-toggle="modal" data-target="#audioPlayerModal" onclick=`updateAudioPlayer("${song.url}", "${song.imageUrl}", "${song.title}", "${song.author.fullname}", ${-1})`) #{t('content.play')}
+          .card-songs-detail
+            .card-body
+              form#form_put_suggest_song(action=`/admin/suggest-song/update/${suggestSong.id}?_method=PUT` method="POST" enctype="multipart/form-data") 
+                input(type="hidden" name="_method" value="PUT")
+                if error_msg.length
+                  #errorAlert.alert.alert-danger #{error_msg}
+                if success_msg.length
+                  #successAlert.alert.alert-success #{success_msg}
+                .mb-3
+                  p.d-none(id="id", name="id")= suggestSong.id
+                  label.form-label(for="status")= t('form.status')
+                  select.form-control(name="status" id="status" onchange="toggleReasonLockUser()")
+                    each status in statusSuggest
+                      if status === suggestSong.status
+                        option(value=status selected)= status
+                      else  
+                        option(value=status)= status
+                .mb-3.d-none#reasonLockUser
+                  label(for="reason")= t('form.reason')
+                  input.form-control(type="text" name="reason" id="reason" placeholder= t('message.enterReason'))
+                button.btn.btn-success.fw-bold.w-25(type="submit")= t('common.edit')
+  block scripts
+    script(src="/js/user.js")
+    script(src="/js/layout_admin.js")

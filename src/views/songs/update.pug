@@ -15,7 +15,10 @@ block content
         label(for="artist")= t('songs.updateSong.label.artist')
         select#artist.form-control(name="artist" required)
           each author in authors
-            option(value=author.id selected=author.fullname === song.author)= author.fullname
+            if author.id === song.author.id
+              option(value=author.id selected)= author.fullname
+            else 
+              option(value=author.id)= author.fullname 
 
       .form-group
         label(for='lyrics')= t('songs.updateSong.label.lyrics')

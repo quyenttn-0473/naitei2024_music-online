@@ -57,7 +57,7 @@ block content
               strong #{t('content.lyrics')}
               .bio-content
                 | !{song.lyrics.replace(/\n/g, '<br>')}
-              a#toggleBio(href="javascript:void(0);", class="d-block mt-2", data-show-more=t('common.showMore'), data-show-less=t('common.showLess')) #{t('common.showMore')}
+              a#toggleBio(href="javascript:void(0);", class="d-block mt-2", data-show-more=t('common.showMore'), data-show-less=t('common.showLess'))= t('common.showMore')
 
     .modal.fade(id='addToPlaylistModal', tabindex='-1', role='dialog')
       .modal-dialog(role='document')

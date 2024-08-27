@@ -274,4 +274,37 @@ $(document).ready(function () {
     form.submit();
     setButtonState($(this));
   });
+
+  $('#form_put_suggest_song').on('submit', function (e) {
+    e.preventDefault();
+    const formData = {
+      status: $('#status').val(),
+      reason: $('#reason').val(),
+    };
+    const id = $('#id').text();
+    fetch(`/admin/suggest-song/update/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ formData }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === true) {
+          setTimeout(function () {
+            location.reload();
+          }, 3000);
+        } else {
+          setTimeout(function () {
+            location.reload();
+          }, 3000);
+        }
+      })
+      .catch((error) => {
+        setTimeout(function () {
+          location.reload();
+        }, 3000);
+      });
+  });
 });

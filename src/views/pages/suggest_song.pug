@@ -1,0 +1,51 @@
+extends ../layout_user
+
+block stylesheets
+  link(rel="stylesheet", href="/styles/custom_create.css")
+  link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css") 
+
+block content
+  .container
+    .combo_back.mb-3
+      a.btn.btn_back.d-cursor-pointer.mr-2(href="/user") 
+        i.fas.fa-chevron-left.d-cursor-pointer
+      a.btn.btn_back.d-cursor-not-allowed(href="") 
+        i.fas.fa-chevron-right.d-cursor-not-allowed
+    h1= t('suggest_song.title')
+    #errorAlert.alert.alert-danger.d-none 
+    #successAlert.alert.alert-success.d-none
+    form#form_suggest_song(action="/user/suggest-song/send" method="POST" enctype="multipart/form-data")
+      .form-group
+        label(for="title")= t('suggest_song.form.title')
+        input#title.form-control(type="text" name="title" )
+
+      .form-group
+        label(for="artist")= t('suggest_song.form.artist')
+        select#artist.form-control(name="authorId" )
+          each author in authors
+            option.text-danger(value=author.id)= author.fullname
+
+      .form-group
+        label(for="lyrics")= t('suggest_song.form.lyrics')
+        textarea#lyrics.form-control.textarea-scroll(name="lyrics" rows="7" )
+
+      .form-group
+        label(for="image")= t('suggest_song.form.image')
+        input#image.form-control(type="file" name="image" accept="image/*")
+
+      .form-group
+        label(for="song")= t('suggest_song.form.song')
+        input#song.form-control(type="file" name="song" accept=".mp3" )
+
+      .form-group
+        label(for="genres")= t('suggest_song.form.genres')
+        each genre in genres
+          .form-check
+            input.form-check-input#genre(type="checkbox" name="genresIds" value=genre.id)
+            label.form-check-label(for="genre")= genre.name
+      button.btn.btn-secondary.mr-2(type='reset')= t('suggest_song.cancel')
+      button.btn.btn-primary(type="submit")= t('suggest_song.send')
+
+  block scripts
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js")
+    script(src="/js/layout_user.js")

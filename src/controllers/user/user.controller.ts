@@ -5,13 +5,28 @@ import { t } from 'i18next';
 import { comparePassword, hashPassword } from '@src/utils/passwordUtils';
 import { UserRoles, UserStatus } from '@src/enums/UserRoles.enum';
 import { User } from '@src/entities/User.entity';
-import { getAuthors } from '@src/services/Author.service';
+import {
+  createAuthor,
+  getAuthorByFullName,
+  getAuthorById,
+  getAuthors,
+} from '@src/services/Author.service';
 import { getAlbums } from '@src/services/Album.service';
-import { getAllSongs, getSongsByPlaylistId } from '@src/services/Song.service';
+import {
+  createSong,
+  getSongById,
+  getAllSongs,
+  getSongsByPlaylistId,
+} from '@src/services/Song.service';
 import { sendEmailNormal } from '@src/config/mailer';
-import { transOTPEmail } from '@src/constants/contentMail';
+import { transOTPEmail, transSuggestSong } from '@src/constants/contentMail';
 import { PlaylistTitle } from '@src/enums/PlaylistTypes.enum';
 import { getPlaylistByUserIdAndTitle } from '@src/services/Playlist.service';
+import { getGenres, getGenresByIds } from '@src/services/Genre.service';
+import { Change } from '@src/constants/change';
+import { uploadFileToFirebase } from '@src/utils/fileUpload.utils';
+import { SongStatus } from '@src/enums/SongStatus.enum';
+import { createSuggestSong } from '@src/services/SuggestSong.service';
 
 export class UserController {
   private static generateOTP(): string {
@@ -282,7 +297,7 @@ export class UserController {
       const otp = UserController.generateOTP();
       (req.session as any).otp = otp;
       const dataSend = {
-        username: userForm.user_email,
+        username: userForm.user_username,
         otp: otp,
       };
       await sendEmailNormal(
@@ -330,6 +345,123 @@ export class UserController {
     } catch (error) {
       req.flash('error_msg', t('error.system'));
       res.redirect('/login');
+    }
+  };
+
+  public static getSuggestSong = async (req: Request, res: Response) => {
+    const user = res.locals.user;
+    try {
+      const authors = await getAuthors();
+      const genres = await getGenres();
+      res.render('pages/suggest_song', {
+        authors,
+        genres,
+        title: req.t('title'),
+        user,
+      });
+    } catch (error) {
+      res.redirect('/login');
+    }
+  };
+
+  public static postSuggestSong = async (req: Request, res: Response) => {
+    const user = res.locals.user;
+    const title = req.body.title;
+    const artistName = req.body.authorId;
+    const lyrics = req.body.lyrics;
+    const genresIds = req.body.genresIds;
+    try {
+      let imageUrl = '';
+      let url = '';
+      let author;
+      if (/^\d+$/.test(artistName)) {
+        // artistName là một chuỗi số
+        author = await getAuthorById(parseInt(artistName), req.t);
+      } else {
+        author = await getAuthorByFullName(artistName);
+      }
+      if (!author) {
+        author = await createAuthor(
+          {
+            fullname: artistName,
+            avatar: Change.imageUrl,
+            dateOfBirth: new Date(),
+          },
+          req.t
+        );
+      }
+      const files = req.files as { [fieldname: string]: Express.Multer.File[] };
+
+      if (files.image && files.image.length > 0) {
+        const image = files.image[0];
+        imageUrl = await uploadFileToFirebase(
+          image.buffer,
+          image.originalname,
+          'musics/images',
+          image.mimetype
+        );
+      }
+      if (files.song && files.song.length > 0) {
+        const song = files.song[0];
+        url = await uploadFileToFirebase(
+          song.buffer,
+          song.originalname,
+          'musics/songs',
+          song.mimetype
+        );
+      }
+      const genres = await getGenresByIds(genresIds);
+      const status = SongStatus.Suggesting;
+      const newSong = await createSong(req, {
+        title,
+        artist: author.id.toString(),
+        lyrics,
+        imageUrl,
+        url,
+        status,
+        author,
+        genres,
+      });
+      const suggestedSong = await createSuggestSong(user, newSong);
+      if (!suggestedSong) {
+        return res.status(400).json({
+          status: false,
+          message: t('error.failedToCreateSuggestSong'),
+        });
+      }
+      const songAfter = await getSongById(req, newSong.id);
+      const dataSend = {
+        username: user.username,
+        song: songAfter,
+      };
+      await sendEmailNormal(
+        user.email,
+        transSuggestSong.subject,
+        transSuggestSong.template(dataSend)
+      );
+      return res.status(200).json({
+        status: true,
+        message: t('success.sendSuggestSongSuccess'),
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({
+        status: false,
+        message: t('error.system'),
+      });
+    }
+  };
+
+  public static sendSuggetSong = (req: Request, res: Response) => {
+    const title = req.body.title;
+    try {
+      res.status(200).json({
+        message: title,
+      });
+    } catch (error) {
+      req.flash('error_msg', t('error.system'));
+      console.log('error: ', error);
+      res.redirect('/user/suggest-song');
     }
   };
 }

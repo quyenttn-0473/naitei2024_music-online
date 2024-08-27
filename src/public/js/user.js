@@ -84,8 +84,10 @@ $(document).ready(function () {
 
   $('#toggleBio').on('click', function () {
     const bioContent = $('.bio-content');
-    const showMoreText = "#{t('common.showMore')}";
-    const showLessText = "#{t('common.showLess')}";
+    // const showMoreText = "#{t('common.showMore')}";
+    // const showLessText = "#{t('common.showLess')}";
+    const showMoreText = 'Show more';
+    const showLessText = 'Show less';
 
     if (bioContent.css('max-height') === 'none') {
       bioContent.css('max-height', '100px');
@@ -201,8 +203,9 @@ function toggleReasonLockUser() {
   const reasonLockUser = document.getElementById('reasonLockUser');
   const selectedStatus = statusSelect.value;
   const DeactiveStatus = 'Deactive';
+  const Rejected = 'Rejected';
   const reasonInput = document.getElementById('reason');
-  if (selectedStatus === DeactiveStatus) {
+  if (selectedStatus === DeactiveStatus || selectedStatus === Rejected) {
     reasonLockUser.classList.remove('d-none');
     reasonInput.setAttribute('required', 'required');
   } else {

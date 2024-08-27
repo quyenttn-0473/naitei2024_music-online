@@ -7,6 +7,7 @@ import {
   OneToOne,
   Column,
   BaseEntity,
+  JoinColumn,
 } from 'typeorm';
 import { User } from './User.entity';
 import { Song } from './Song.entity';
@@ -21,6 +22,7 @@ export class SuggestedSong extends BaseEntity {
   user: User;
 
   @OneToOne(() => Song, (song) => song.suggestedSong)
+  @JoinColumn()
   song: Song;
 
   @Column('text', { nullable: true })

@@ -38,3 +38,61 @@ export const transOTPEmail = {
       <div>Nếu bạn có bất kỳ câu hỏi nào, xin vui lòng gửi email đến <b>tranngocquyen262dc@gmail.com</b>.</div>`;
   },
 };
+
+export const transSuggestSong = {
+  subject: 'Gửi Bài Hát Gợi Ý Lên Ứng Dụng Music Online',
+  template: (data: any) => {
+    return `<h3>Yêu Cầu Gửi Bài Hát Gợi Ý</h3>
+      <p>Kính gửi ${data.username},</p>
+      <p>Chúng tôi đã nhận được yêu cầu gửi bài hát gợi ý trên ứng dụng Music Online.</p>
+      <p>Cảm ơn bạn đã gửi bài hát cho hệ thống. Hệ thống của chúng tôi đã nhận được bài hát của bạn</b></p>
+      <p>Đây là thông tin bài hát của bạn: </p>
+      <p>Tên bài hát: <b>${data.song.title}</b></p>
+      <p>Ca sĩ: <b>${data.song.author.fullname}</b></p>
+      <p>Chúng tôi sẽ gửi mail duyệt bài hát sớm nhất cho bạn.</p>
+      <br>
+      <p>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi!</p>
+      <p>Trân trọng,</p>
+      <p>Đội ngũ hỗ trợ của Music Online</p>
+      <div>Nếu bạn có bất kỳ câu hỏi nào, xin vui lòng gửi email đến <b>tranngocquyen262dc@gmail.com</b>.</div>`;
+  },
+};
+
+export const transSuggestSongApproved = {
+  subject: 'Phản Hồi Bài Hát Gợi Ý Lên Ứng Dụng Music Online',
+  template: (data: any) => {
+    return `<h3>Kết Quả Bài Hát Gợi Ý</h3>
+      <p>Kính gửi ${data.username},</p>
+      <p>Chúng tôi đã nhận được yêu cầu gửi bài hát gợi ý trên ứng dụng Music Online.</p>
+      <p>Cảm ơn bạn đã gửi bài hát cho hệ thống. <b>Bài hát của bạn đã được duyệt</b></p>
+      <p>Đây là thông tin bài hát của bạn: </p>
+      <p>Tên bài hát: <b>${data.song.title}</b></p>
+      <p>Ca sĩ: <b>${data.song.author.fullname}</b></p>
+      <p>Bài hát của bạn đã được đăng tải trên ứng dụng Music Online. Bạn có thể truy cập vào ứng dụng để có thể nghe bài hát.</p>
+      <br>
+      <p>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi!</p>
+      <p>Trân trọng,</p>
+      <p>Đội ngũ hỗ trợ của Music Online</p>
+      <div>Nếu bạn có bất kỳ câu hỏi nào, xin vui lòng gửi email đến <b>tranngocquyen262dc@gmail.com</b>.</div>`;
+  },
+};
+
+export const transSuggestSongRejected = {
+  subject: 'Phản Hồi Bài Hát Gợi Ý Lên Ứng Dụng Music Online',
+  template: (data: any) => {
+    return `<h3>Kết Quả Bài Hát Gợi Ý</h3>
+      <p>Kính gửi ${data.username},</p>
+      <p>Chúng tôi đã nhận được yêu cầu gửi bài hát gợi ý trên ứng dụng Music Online.</p>
+      <p>Cảm ơn bạn đã gửi bài hát cho hệ thống. <b>Bài hát của bạn đã bị từ chối</b></p>
+      <p>Lý do từ chối: <b>${data.reason}</b></p>
+      <p>Đây là thông tin bài hát của bạn: </p>
+      <p>Tên bài hát: <b>${data.song.title}</b></p>
+      <p>Ca sĩ: <b>${data.song.author.fullname}</b></p>
+      <p>Bài hát của bạn đã được không được đăng tải trên ứng dụng Music Online. Bạn có thể truy cập vào ứng dụng để có thể nghe bài hát khác.</p>
+      <br>
+      <p>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi!</p>
+      <p>Trân trọng,</p>
+      <p>Đội ngũ hỗ trợ của Music Online</p>
+      <div>Nếu bạn có bất kỳ câu hỏi nào, xin vui lòng gửi email đến <b>tranngocquyen262dc@gmail.com</b>.</div>`;
+  },
+};

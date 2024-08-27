@@ -19,7 +19,8 @@
     "genre": "Thể Loại",
     "song": "Bài Hát",
     "user": "Người Dùng",
-    "album": "Album"
+    "album": "Album",
+    "suggest_song": "Đề xuất bài hát"
   },
   "content": {
     "discover_new_music": "Khám Phá Âm Nhạc Mới",
@@ -137,7 +138,10 @@
     "noSongs": "Không Có Bài Hát Nào",
     "OTPIncorrect": "Mã OTP không chính xác.",
     "unauthorized": "Bạn không có quyền truy cập tài nguyên này.",
-    "errorFetchingLikedSong": "Lỗi tìm nạp bài hát đã thích"
+    "errorFetchingLikedSong": "Lỗi tìm nạp bài hát đã thích",
+    "failedToCreateSuggestSong": "Tạo mới bài hát đề xuất thất bại.",
+    "suggestSongnotFound": "Không tìm thấy bài hát gợi ý",
+    "updateSuggestSongFail": "Chỉnh sửa bài hát gợi ý thất bại"
   },
   "success": {
     "createSuccess": "Tạo Thành Công",
@@ -145,7 +149,9 @@
     "deleteSuccess": "Xóa Thành Công",
     "passwordChangedSuccessfully": "Mật khẩu đã được thay đổi thành công",
     "addSongLikedSong": "Thêm bài hát vào bài hát đã thích thành công",
-    "removeSongLikedSong": "Xóa bài hát khỏi bài hát đã thích thành công"
+    "removeSongLikedSong": "Xóa bài hát khỏi bài hát đã thích thành công",
+    "sendSuggestSongSuccess": " Gửi bài hát gợi ý thành công",
+    "updateSuggestSongSuccess": "Chỉnh sửa bài hát gợi ý thành công"
   },
   "warning": {
     "authorHasSongs": "Tác giả không thể bị xóa vì có bài hát thuộc về họ."
@@ -376,5 +382,33 @@
     "title": "Bài hát đã thích",
     "description": "Bài hát bạn đã thích sẽ xuất hiện ở đây",
     "instruction": "Lưu bài hát bằng cách nhấn vào biểu tượng trái tim."
+  },
+  "suggest_song": {
+    "title": "Gợi ý bài hát",
+    "title_detail": "Chi tiết bài hát gợi ý",
+    "form": {
+      "title": "Tiêu Đề",
+      "artist": "Ca Sĩ",
+      "lyrics": "Lời Bài Hát",
+      "image": "Hình Ảnh",
+      "song": "Tệp Bài Hát",
+      "genres": "Thể loại",
+      "new_artist": "Ca Sĩ Mới",
+      "username": "Tên Tài Khoản",
+      "status": "Trạng Thái"
+    },
+    "send": "Gửi",
+    "cancel": "Hủy"
+  },
+  "changePassword": {
+    "title": "Đổi Mật Khẩu",
+    "currentPassword": "Mật Khẩu Hiện Tại",
+    "newPassword": "Mật Khẩu Mới",
+    "confirmNewPassword": "Xác Nhận Mật Khẩu Mới",
+    "enter": "Nhập"
+  },
+  "OTP": {
+    "title": "Mã OTP",
+    "submit": "Gửi"
   }
 }

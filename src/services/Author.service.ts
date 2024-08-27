@@ -1,7 +1,7 @@
 import { Like } from 'typeorm';
 import { AppDataSource } from '../config/data-source';
 import { Author } from '../entities/Author.entity';
-import { TFunction } from 'i18next';
+import { t, TFunction } from 'i18next';
 
 const authorRepository = AppDataSource.getRepository(Author);
 
@@ -120,4 +120,15 @@ export const searchAuthors = async (query: string) => {
     .createQueryBuilder('author')
     .where('author.fullname LIKE :query', { query: `%${query}%` })
     .getMany();
+};
+
+export const getAuthorByFullName = async (fullname: string) => {
+  try {
+    return await authorRepository.findOne({
+      where: { fullname: fullname },
+      relations: ['songs', 'albums'],
+    });
+  } catch (error) {
+    throw new Error(t('error.failedToFetchAuthor'));
+  }
 };

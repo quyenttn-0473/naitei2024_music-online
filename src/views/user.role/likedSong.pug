@@ -15,7 +15,7 @@ block content
         each song in songsByLikedSong
           li.item(role="button") 
             img.avatar.square(src=song.imageUrl, alt=song.title)
-            a.full_name(href=`/user/musics/${song.id}`) #{song.title}
+            a.full_name(href=`/user/detail/musics/${song.id}`) #{song.title}
             .d-flex.justify-content-between.mt-2
               p.artist #{song.author.fullname}
               span.like-button(data-liked='true' data-song-id=song.id)

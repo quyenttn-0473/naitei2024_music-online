@@ -19,7 +19,8 @@
     "genre": "Genre",
     "song": "Song",
     "user": "User",
-    "album": "Album"
+    "album": "Album",
+    "suggest_song": "Suggest Song"
   },
   "content": {
     "discover_new_music": "Discover New Music",
@@ -137,7 +138,10 @@
     "noSongs": "No Songs Available",
     "OTPIncorrect": "OTP code is incorrect",
     "unauthorized": "You are not authorized to access this resource.",
-    "errorFetchingLikedSong": "Error fetching liked songs"
+    "errorFetchingLikedSong": "Error fetching liked songs",
+    "failedToCreateSuggestSong": "Failed to create suggest song.",
+    "suggestSongnotFound": "Suggest Song Not Found",
+    "updateSuggestSongFail": "Update Suggest Song Failed"
   },
   "success": {
     "createSuccess": "Create Success",
@@ -145,7 +149,9 @@
     "deleteSuccess": "Delete Success",
     "passwordChangedSuccessfully": "Password changed successfully",
     "addSongLikedSong": "Add Song to Liked Song Success",
-    "removeSongLikedSong": "Remove Song from Liked Song Success"
+    "removeSongLikedSong": "Remove Song from Liked Song Success",
+    "sendSuggestSongSuccess": " Send Suggest Song Success",
+    "updateSuggestSongSuccess": "Update Suggest Song Success"
   },
   "warning": {
     "authorHasSongs": "Artist cannot be removed because there are songs that belong to them."
@@ -375,5 +381,33 @@
     "title": "Liked Song",
     "description": "Your favorite songs will appear here",
     "instruction": "Save a song by clicking on the heart icon."
+  },
+  "suggest_song": {
+    "title": "Suggest Song",
+    "title_detail": "Suggested Song Detail",
+    "form": {
+      "title": "Title",
+      "artist": "Artist",
+      "lyrics": "Lyrics",
+      "image": "Image",
+      "song": "Song File",
+      "genres": "Genres",
+      "new_artist": "New Artist",
+      "username": "User Name",
+      "status": "Status"
+    },
+    "send": "Send",
+    "cancel": "Cancel"
+  },
+  "changePassword": {
+    "title": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmNewPassword": "Confirm New Password",
+    "enter": "Enter"
+  },
+  "OTP": {
+    "title": "OTP",
+    "submit": "Submit"
   }
 }

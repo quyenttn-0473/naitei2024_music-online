@@ -60,4 +60,61 @@ $(document).ready(function () {
         });
     }
   });
+
+  $('#artist').select2({
+    placeholder: 'Select an artist',
+    allowClear: true,
+    tags: true,
+    createTag: function (params) {
+      var term = $.trim(params.term);
+      if (term === '') {
+        return null;
+      }
+      return {
+        id: term,
+        text: term,
+        newTag: true,
+      };
+    },
+  });
+
+  $('#form_suggest_song').on('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('title', $('#title').val());
+    formData.append('authorId', $('#artist').val());
+    formData.append('lyrics', $('#lyrics').val());
+    formData.append('image', $('#image')[0].files[0]);
+    formData.append('song', $('#song')[0].files[0]);
+    formData.append('genresIds', $('#genre').val());
+    const $errorAlert = $('#errorAlert');
+    const $successAlert = $('#successAlert');
+    fetch('/user/suggest-song/send', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === true) {
+          $successAlert.text(data.message).removeClass('d-none');
+          $errorAlert.addClass('d-none');
+          setTimeout(function () {
+            location.reload();
+          }, 3000);
+        } else {
+          $errorAlert.text(data.message).removeClass('d-none');
+          $successAlert.addClass('d-none');
+          setTimeout(function () {
+            location.reload();
+          }, 3000);
+        }
+      })
+      .catch((error) => {
+        $errorAlert.text(error).removeClass('d-none');
+        $successAlert.addClass('d-none');
+        setTimeout(function () {
+          location.reload();
+        }, 3000);
+      });
+  });
 });

@@ -31,7 +31,7 @@ block content
         each song, index in songs 
           li.list-group-item.d-flex.justify-content-between.playlist-song(data-song-url=song.url)
             .col-6
-              a(href=`/user/detail/musics/${song.id}`)
+              a(href=`/user/detail/musics/${song.id}` class=`${song.status === Deactive ? 'text-muted' : ''}`)
                 h5.mb-1(class=`${song.status === Deactive ? 'text-muted' : ''}`)= song.title
               h5(class=`${song.status === Deactive ? 'text-muted' : ''}`) #{t('songs.form.artist')}: #{song.author.fullname}
             .col-3

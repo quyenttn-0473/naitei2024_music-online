@@ -83,3 +83,11 @@ form#createUserform {
 form.w-400 {
   width: 400px;
 }
+
+button.btn-secondary {
+  background-color: #6C757D;
+}
+
+.select2-results {
+  color: #000e05;
+}

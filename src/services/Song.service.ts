@@ -21,7 +21,6 @@ export const getAllSongs = async (req: Request, role?: string) => {
   try {
     const whereCondition =
       role === UserRoles.User ? { status: SongStatus.Publish } : {};
-
     return await songRepository.find({
       where: whereCondition,
       relations: ['author', 'album', 'genres'],
@@ -42,6 +41,7 @@ export const getSongsPage = async (
     relations: ['author', 'album', 'genres'],
     where: {
       title: Like(`%${query}%`),
+      status: Not(SongStatus.Reject),
     },
     skip: (page - 1) * pageSize,
     take: pageSize,

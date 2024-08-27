@@ -15,6 +15,7 @@ import {
   deleteSongFromLikedSong,
   getLikedSong,
 } from '@src/controllers/user/Song.user.controller';
+import { upload } from '@src/middleware/multer';
 
 const router = Router();
 router.use(sessionMiddleware);
@@ -47,4 +48,10 @@ router.delete('/liked-songs', deleteSongFromLikedSong);
 router.post('/liked-songs', addSongToLikedSong);
 router.get('/liked-song', getLikedSong);
 
+router.get('/suggest-song', UserController.getSuggestSong);
+router.post(
+  '/suggest-song/send',
+  upload.fields([{ name: 'image' }, { name: 'song' }]),
+  UserController.postSuggestSong
+);
 export default router;
