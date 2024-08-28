@@ -92,6 +92,8 @@
     "usernameAlreadyTaken": "Username already taken",
     "checkingUsername": "Error checking username",
     "failedToFetchGenres": "Failed to fetch genres.",
+    "failedToUpdateGenre": "Failed to update author.",
+    "failedToDeleteGenre": "Failed to delete author.",
     "invalidGenreId": "Invalid genre ID",
     "genreNotFound": "Genre not found",
     "usernameNotFound": "Username not found!",

@@ -92,6 +92,8 @@
     "usernameAlreadyTaken": "Tên Người Dùng Đã Được Sử Dụng",
     "checkingUsername": "Lỗi Kiểm Tra Tên Người Dùng",
     "failedToFetchGenres": "Không Thể Lấy Thể Loại.",
+    "failedToUpdateGenre": "Không thể cập nhật thể loại.",
+    "failedToDeleteGenre": "Không thể xóa thể loại.",
     "invalidGenreId": "ID Thể Loại Không Hợp Lệ",
     "genreNotFound": "Không Tìm Thấy Thể Loại",
     "usernameNotFound": "Tên Người Dùng Không Tồn Tại!",
