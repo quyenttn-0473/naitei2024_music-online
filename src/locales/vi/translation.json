@@ -401,5 +401,16 @@
     },
     "send": "Gửi",
     "cancel": "Hủy"
+  },
+  "changePassword": {
+    "title": "Đổi Mật Khẩu",
+    "currentPassword": "Mật Khẩu Hiện Tại",
+    "newPassword": "Mật Khẩu Mới",
+    "confirmNewPassword": "Xác Nhận Mật Khẩu Mới",
+    "enter": "Nhập"
+  },
+  "OTP": {
+    "title": "Mã OTP",
+    "submit": "Gửi"
   }
 }

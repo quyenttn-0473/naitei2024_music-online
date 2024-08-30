@@ -400,5 +400,16 @@
     },
     "send": "Send",
     "cancel": "Cancel"
+  },
+  "changePassword": {
+    "title": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmNewPassword": "Confirm New Password",
+    "enter": "Enter"
+  },
+  "OTP": {
+    "title": "OTP",
+    "submit": "Submit"
   }
 }

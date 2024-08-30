@@ -1,5 +1,6 @@
-import { AppDataSource } from '@src/config/data-source';
-import { User } from '@src/entities/User.entity';
+import { Like } from 'typeorm';
+import { AppDataSource } from '../config/data-source';
+import { User } from '../entities/User.entity';
 
 const userRepository = AppDataSource.getRepository(User);
 class UserService {
@@ -10,7 +11,7 @@ class UserService {
       },
     });
   }
-  public async create(userData: Partial<User>): Promise<boolean> {
+  public async create(userData: Partial<User>) {
     const user = new User(userData);
     return userRepository
       .save(user)
@@ -39,7 +40,7 @@ class UserService {
       .groupBy('user.id')
       .getRawOne();
   }
-  public async update(id: number, userData: Partial<User>): Promise<boolean> {
+  public async update(id: number, userData: Partial<User>) {
     try {
       const user = await userRepository.findOne({ where: { id } });
       if (!user) {
@@ -47,13 +48,19 @@ class UserService {
       }
       Object.assign(user, userData);
       await userRepository.save(user);
-      return true;
+      return user;
     } catch (error) {
       return false;
     }
   }
   public async delete(id: number) {
     try {
+      const user = await userRepository.findOne({
+        where: { id },
+      });
+      if (!user) {
+        return false; // Trả về false nếu không tìm thấy user
+      }
       await userRepository.delete(id);
       return true;
     } catch (error) {
@@ -68,9 +75,13 @@ export const getUserPage = async (
   page: number,
   pageSize: number,
   sortField: keyof User = 'username',
-  sortOrder: 'ASC' | 'DESC' = 'ASC'
+  sortOrder: 'ASC' | 'DESC' = 'ASC',
+  query: string = ''
 ) => {
   const [users, total] = await userRepository.findAndCount({
+    where: {
+      username: Like(`%${query}%`),
+    },
     skip: (page - 1) * pageSize,
     take: pageSize,
     order: {
