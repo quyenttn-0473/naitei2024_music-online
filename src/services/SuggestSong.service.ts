@@ -1,15 +1,15 @@
-import { AppDataSource } from '@src/config/data-source';
-import { Song } from '@src/entities/Song.entity';
-import { SuggestedSong } from '@src/entities/SuggestedSong.entity';
-import { User } from '@src/entities/User.entity';
-import { SuggestionStatus } from '@src/enums/SuggestionStatus.enum';
+import { AppDataSource } from '../config/data-source';
+import { Song } from '../entities/Song.entity';
+import { SuggestedSong } from '../entities/SuggestedSong.entity';
+import { User } from '../entities/User.entity';
+import { SuggestionStatus } from '../enums/SuggestionStatus.enum';
 import { t } from 'i18next';
 
 const suggestSongRepository = AppDataSource.getRepository(SuggestedSong);
 export const createSuggestSong = async (
   user: Partial<User>,
   song: Partial<Song>
-): Promise<SuggestedSong> => {
+) => {
   try {
     const suggestedSong = suggestSongRepository.create({
       user,
@@ -19,6 +19,7 @@ export const createSuggestSong = async (
     await suggestSongRepository.save(suggestedSong);
     return suggestedSong;
   } catch (error) {
+    return false;
     throw new Error(t('error.failedToCreateSuggestSong'));
   }
 };

@@ -258,7 +258,7 @@ export class AlbumController {
     const albumId = parseInt(req.params.id, 10);
     try {
       const { songId } = req.body;
-      await addSongToAlbum(req, albumId, songId);
+      await addSongToAlbum(albumId, songId);
     } catch (error) {
       req.flash('error_msg', req.t('error.failedToAddSongAlbum'));
     } finally {
@@ -270,7 +270,7 @@ export class AlbumController {
     const albumId = parseInt(req.params.id, 10);
     try {
       const { songId } = req.body;
-      await removeSongFromAlbum(req, albumId, Number(songId));
+      await removeSongFromAlbum(albumId, Number(songId));
     } catch (error) {
       req.flash('error_msg', req.t('error.failedToRemoveSongAlbum'));
     } finally {

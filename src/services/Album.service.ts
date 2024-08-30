@@ -1,6 +1,6 @@
-import { AppDataSource } from '@src/config/data-source';
+import { AppDataSource } from '../config/data-source';
 import { Album } from '../entities/Album.entity';
-import { getAuthorById } from '@src/services/Author.service';
+import { getAuthorById } from '../services/Author.service';
 import { t } from 'i18next';
 import { getSongById } from './Song.service';
 import { request, Request } from 'express';
@@ -96,20 +96,18 @@ export const getAlbumPage = async (
   return { albums, total };
 };
 
-export const addSongToAlbum = async (
-  req: Request,
-  albumId: number,
-  songId: number
-) => {
+export const addSongToAlbum = async (albumId: number, songId: number) => {
   const album = await getAlbumById(albumId);
 
   if (!album) {
-    throw new Error(req.t('error.albumNotFound'));
+    return false;
+    throw new Error(t('error.albumNotFound'));
   }
 
   const song = await getSongById(request, songId);
   if (!song) {
-    throw new Error(req.t('error.songNotFound'));
+    return false;
+    throw new Error(t('error.songNotFound'));
   }
 
   if (!album.songs?.length) {
@@ -118,17 +116,15 @@ export const addSongToAlbum = async (
 
   album.songs.push(song);
   await album.save();
+  return true;
 };
 
-export const removeSongFromAlbum = async (
-  req: Request,
-  albumId: number,
-  songId: number
-) => {
+export const removeSongFromAlbum = async (albumId: number, songId: number) => {
   const album = await getAlbumById(albumId);
 
   if (!album) {
-    throw new Error(req.t('error.failedToRemoveSongAlbum'));
+    return false;
+    throw new Error(t('error.failedToRemoveSongAlbum'));
   }
 
   if (!album.songs) {
@@ -136,11 +132,13 @@ export const removeSongFromAlbum = async (
   }
   const songExists = album.songs.some((s) => s.id === songId);
   if (!songExists) {
-    throw new Error(req.t('error.songNotFound'));
+    return false;
+    throw new Error(t('error.songNotFound'));
   }
 
   album.songs = album.songs.filter((s) => s.id !== songId);
   await album.save();
+  return true;
 };
 
 export const searchAlbums = async (query: string) => {

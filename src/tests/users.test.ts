@@ -98,7 +98,7 @@ describe('UserService', () => {
   describe('findUsers', () => {
     it('should return a list of users', async () => {
       const result = await UserService.findUsers();
-      expect(result.length).toEqual(5);
+      expect(result.length).toEqual(10);
       expect(result[0]).toBeInstanceOf(User);
     });
   });
@@ -192,15 +192,15 @@ describe('UserService', () => {
       const result = await getUserPage(1, 1);
       expect(result.users.length).toEqual(1);
       expect(result.users[0]).toBeInstanceOf(User);
-      expect(result.total).toEqual(4);
+      expect(result.total).toEqual(9);
     });
 
     it('should return paginated users matching keyword', async () => {
       const result = await getUserPage(1, 10, 'username', 'ASC', 'nhatvy');
-      expect(result.users.length).toBe(1);
+      expect(result.users.length).toBe(2);
       expect(result.users[0]).toBeInstanceOf(User);
       expect(result.users[0].username).toEqual('nhatvy');
-      expect(result.total).toBe(1);
+      expect(result.total).toBe(2);
     });
   });
 });

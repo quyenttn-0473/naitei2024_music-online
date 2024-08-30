@@ -1,9 +1,9 @@
-import { AppDataSource } from '@src/config/data-source';
-import { PAGE_SIZE_SONG } from '@src/constants/const';
-import { Genre } from '@src/entities/Genre.entity';
-import { Song } from '@src/entities/Song.entity';
-import { SongStatus } from '@src/enums/SongStatus.enum';
-import { UserRoles } from '@src/enums/UserRoles.enum';
+import { AppDataSource } from '../config/data-source';
+import { PAGE_SIZE_SONG } from '../constants/const';
+import { Genre } from '../entities/Genre.entity';
+import { Song } from '../entities/Song.entity';
+import { SongStatus } from '../enums/SongStatus.enum';
+import { UserRoles } from '../enums/UserRoles.enum';
 import { Request } from 'express';
 import { FindOptionsWhere, In, Like, Not } from 'typeorm';
 
